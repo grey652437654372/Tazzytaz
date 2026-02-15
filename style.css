@@ -25,7 +25,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   backdrop-filter: blur(8px);
-  background-color: rgba(0,0,0,0.3); /* slight dark overlay for readability */
+  background-color: rgba(0,0,0,0.3);
   animation: fadeIn 1s ease forwards;
   opacity: 0;
 }
@@ -37,13 +37,21 @@ body {
   }
 }
 
-/* Profile picture */
+/* 🔥 Profile picture upgraded */
 .profile-pic {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   border: 4px solid #ffffff;
   margin-bottom: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(255,255,255,0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 40px rgba(255,255,255,0.9);
 }
 
 /* Heading & paragraph */
@@ -78,7 +86,7 @@ p {
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-/* Responsive adjustments for small screens */
+/* Responsive adjustments */
 @media (max-width: 500px) {
   .container {
     padding: 15px;
