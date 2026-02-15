@@ -1,1 +1,106 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* GIF Background */
+body {
+  background: url('1a164772-1e99-4c15-831d-edf26d07b51c.gif') no-repeat center center fixed;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main container with blur */
+.container {
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0,0,0,0.3); /* slight dark overlay for readability */
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Profile picture */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #ffffff;
+  margin-bottom: 20px;
+}
+
+/* Heading & paragraph */
+h1 {
+  color: #ffffff;
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #ffffff;
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+/* Buttons styling */
+.buttons a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: rgba(0,0,0,0.6);
+  padding: 15px 0;
+  margin: 10px 0;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.buttons a:hover {
+  background-color: rgba(0,0,0,0.8);
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 500px) {
+  .container {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+
+  .buttons a {
+    padding: 12px 0;
+    font-size: 0.9em;
+  }
+}
 
