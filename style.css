@@ -1,75 +1,93 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0f0f0f;
+    color:white;
 }
 
-/* Background */
-body {
-  background: url('1a164772-1e99-4c15-831d-edf26d07b51c.gif') no-repeat center center fixed;
-  background-size: cover;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+header{
+    background:#111;
+    padding:20px;
+    text-align:center;
 }
 
-/* Container */
-.container {
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  padding: 20px;
-  border-radius: 15px;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0,0,0,0.3);
+header h1{
+    margin:0;
+    color:#00bfff;
 }
 
-/* Profile Picture */
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  margin-bottom: 20px;
-  box-shadow: 0 0 25px rgba(255,255,255,0.7);
-  transition: 0.3s ease;
+nav{
+    margin-top:10px;
 }
 
-.profile-pic:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(255,255,255,1);
+nav a{
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
-/* Text */
-h1 {
-  color: white;
-  margin-bottom: 10px;
+nav a:hover{
+    color:#00bfff;
 }
 
-p {
-  color: white;
-  margin-bottom: 20px;
+section{
+    padding:60px 20px;
+    max-width:1000px;
+    margin:auto;
 }
 
-/* Buttons */
-.buttons a {
-  display: block;
-  text-decoration: none;
-  color: white;
-  background-color: rgba(0,0,0,0.6);
-  padding: 15px 0;
-  margin: 10px 0;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: 0.3s ease;
+.hero{
+    text-align:center;
 }
 
-.buttons a:hover {
-  background-color: rgba(0,0,0,0.8);
-  transform: scale(1.05);
+.hero h2{
+    font-size:40px;
+}
+
+.portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.portfolio-item{
+    background:#1b1b1b;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.portfolio-item img{
+    width:100%;
+    border-radius:8px;
+}
+
+.pricing{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.price-card{
+    background:#1b1b1b;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.price{
+    font-size:28px;
+    color:#00bfff;
+}
+
+.contact{
+    text-align:center;
+}
+
+footer{
+    background:#111;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
 }
