@@ -1,96 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Tazzy Detailing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creator Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
 
-<link rel="stylesheet" href="style.css">
+    header {
+      background: #020617;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
 
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #1e293b;
+    }
+
+    nav a {
+      padding: 14px 20px;
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background: #3b82f6;
+    }
+
+    section {
+      padding: 40px;
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+    }
+
+    .btn {
+      background: #3b82f6;
+      padding: 12px 20px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 8px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-<h1>My Editing Services</h1>
+<header>Tazzy Auto Detailing</header>
 
 <nav>
-<a href="#portfolio">Portfolio</a>
-<a href="#pricing">Prices</a>
-<a href="#contact">Contact</a>
+  <a href="#" onclick="showTab('home')">Home</a>
+  <a href="#" onclick="showTab('services')">Services</a>
+  <a href="#" onclick="showTab('contact')">Contact</a>
 </nav>
-</header>
 
-<section class="hero">
-<h2>Blender Profile Pictures, Thumbnails & Video Editing</h2>
-<p>I create high-quality visuals for creators and YouTubers.</p>
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <h1>Premium Car Detailing</h1>
+    <p>We make your car look brand new — inside and out.</p>
+    <button class="btn" onclick="showTab('contact')">Book Now</button>
+  </div>
 </section>
 
-<section id="portfolio">
-<h2>Portfolio</h2>
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
 
-<div class="portfolio-grid">
+  <div class="card">
+    <h3>Interior Detail</h3>
+    <p>Deep cleaning of seats, carpets, dashboard, and more.</p>
+  </div>
 
-<div class="portfolio-item">
-<img src="pfp-example.jpg">
-<p>Blender Profile Picture</p>
-</div>
+  <div class="card">
+    <h3>Exterior Wash</h3>
+    <p>Full hand wash, wax, and shine for your car.</p>
+  </div>
 
-<div class="portfolio-item">
-<img src="thumbnail-example.jpg">
-<p>YouTube Thumbnail</p>
-</div>
-
-<div class="portfolio-item">
-<video controls>
-<source src="video-edit.mp4" type="video/mp4">
-</video>
-<p>Video Editing Example</p>
-</div>
-
-</div>
+  <div class="card">
+    <h3>Full Detail</h3>
+    <p>Complete inside and outside detail for the best results.</p>
+  </div>
 </section>
 
-<section id="pricing">
-<h2>Prices</h2>
+<!-- CONTACT -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Phone: (123) 456-7890</p>
+  <p>Email: tazzydetailing@email.com</p>
+  <p>Location: Your City</p>
 
-<div class="pricing">
-
-<div class="price-card">
-<h3>Blender Profile Picture</h3>
-<p class="price">$15</p>
-<p>Custom lighting, pose and background</p>
-</div>
-
-<div class="price-card">
-<h3>YouTube Thumbnail</h3>
-<p class="price">$8</p>
-<p>High-quality thumbnail designed to get clicks</p>
-</div>
-
-<div class="price-card">
-<h3>Video Editing</h3>
-<p class="price">$25+</p>
-<p>Depends on video length and complexity</p>
-</div>
-
-</div>
-</section>
-
-<section id="contact" class="contact">
-<h2>Contact</h2>
-
-<p>Discord: YOURNAME#0000</p>
-<p>Email: your@email.com</p>
-
-<p>Send me a message with the service you want and any references.</p>
+  <div class="card">
+    <h3>Book an Appointment</h3>
+    <p>Text or call us to schedule your detail!</p>
+  </div>
 </section>
 
 <footer>
-<p>© 2026 My Portfolio</p>
+  © 2026 Tazzy Auto Detailing
 </footer>
+
+<script>
+  function showTab(tabId) {
+    const sections = document.querySelectorAll("section");
+    sections.forEach(section => section.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+  }
+</script>
 
 </body>
 </html>
