@@ -14,11 +14,13 @@
 }
 
 .icon {
-  width: 14px;   /* smaller icons */
-  height: 14px;  /* smaller icons */
+  width: 12px !important;
+  height: 12px !important;
+  min-width: 12px;
+  min-height: 12px;
   opacity: 0.75;
-  transition: 0.25s;
   flex-shrink: 0;
+  display: inline-block;
 }
 
 .contact-line:hover .icon {
