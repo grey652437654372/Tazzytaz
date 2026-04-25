@@ -1,1 +1,27 @@
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+  color: #ddd;
+  font-weight: 500;
+  transition: 0.25s;
+}
 
+.contact-line:hover {
+  transform: translateX(5px);
+  color: white;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  opacity: 0.8;
+  transition: 0.25s;
+}
+
+.contact-line:hover .icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.3));
+}
