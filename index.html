@@ -5,17 +5,19 @@
   <title>Tazzy Auto Detailing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- COOLER FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #0a0a0a;
-      --glass: rgba(255,255,255,0.04);
+      --bg: #070707;
+      --glass: rgba(255,255,255,0.05);
+      --glass-strong: rgba(255,255,255,0.08);
       --border: rgba(255,255,255,0.12);
       --text: #eaeaea;
       --muted: #a8a8a8;
       --glow: rgba(255,255,255,0.35);
+      --accent: #ffffff;
     }
 
     * {
@@ -24,8 +26,8 @@
 
     body {
       margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: radial-gradient(circle at top, #111 0%, #070707 50%, #000 100%);
       color: var(--text);
       overflow-x: hidden;
     }
@@ -33,15 +35,15 @@
     /* HEADER */
     header {
       text-align: center;
-      padding: 22px;
+      padding: 24px;
       font-family: "Space Grotesk", sans-serif;
       font-size: 30px;
       font-weight: 700;
       letter-spacing: 2px;
       border-bottom: 1px solid var(--border);
       background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(12px);
-      text-shadow: 0 0 12px var(--glow);
+      backdrop-filter: blur(14px);
+      text-shadow: 0 0 15px var(--glow);
     }
 
     /* NAV */
@@ -52,7 +54,10 @@
       padding: 10px;
       border-bottom: 1px solid var(--border);
       background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     nav a {
@@ -61,7 +66,7 @@
       text-decoration: none;
       font-weight: 500;
       border-radius: 10px;
-      transition: 0.25s;
+      transition: 0.25s ease;
     }
 
     nav a:hover {
@@ -73,7 +78,7 @@
 
     section {
       display: none;
-      padding: 60px 20px;
+      padding: 70px 20px;
       animation: fade 0.5s ease;
     }
 
@@ -84,6 +89,19 @@
     @keyframes fade {
       from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HEADINGS */
+    h2 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 34px;
+      text-align: center;
+      margin-bottom: 25px;
+      text-shadow: 0 0 12px rgba(255,255,255,0.15);
+    }
+
+    p {
+      color: var(--muted);
     }
 
     /* SERVICES */
@@ -101,8 +119,7 @@
       padding: 25px;
       text-align: center;
       transition: 0.3s ease;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 0 0 rgba(0,0,0,0);
+      backdrop-filter: blur(14px);
     }
 
     .service-card:hover {
@@ -115,17 +132,16 @@
       font-family: "Space Grotesk", sans-serif;
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 6px;
     }
 
     .price {
-      color: #fff;
-      font-size: 16px;
       margin-top: 8px;
-      text-shadow: 0 0 10px rgba(255,255,255,0.2);
+      font-weight: 500;
+      color: white;
+      text-shadow: 0 0 10px rgba(255,255,255,0.25);
     }
 
-    /* FORM */
+    /* BOOKING */
     .form-container {
       max-width: 600px;
       margin: auto;
@@ -133,7 +149,7 @@
       border: 1px solid var(--border);
       padding: 25px;
       border-radius: 14px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       box-shadow: 0 0 25px rgba(255,255,255,0.05);
     }
 
@@ -145,9 +161,9 @@
       border: 1px solid #333;
       color: white;
       border-radius: 8px;
-      font-family: inherit;
       outline: none;
       transition: 0.25s;
+      font-family: inherit;
     }
 
     input:focus, select:focus, textarea:focus {
@@ -165,7 +181,7 @@
       border-radius: 8px;
       cursor: pointer;
       transition: 0.25s;
-      box-shadow: 0 0 15px rgba(255,255,255,0.15);
+      margin-top: 10px;
     }
 
     button:hover {
@@ -173,21 +189,21 @@
       box-shadow: 0 0 25px var(--glow);
     }
 
+    #successMsg {
+      display: none;
+      text-align: center;
+      color: lightgreen;
+      margin-top: 12px;
+    }
+
     /* CONTACT */
     .contact-line {
+      margin: 10px 0;
       display: flex;
       align-items: center;
       gap: 8px;
-      margin: 10px 0;
       color: #ddd;
     }
-
-    .icon {
-      width: 12px;
-      height: 12px;
-      opacity: 0.8;
-    }
-
   </style>
 </head>
 
@@ -204,17 +220,13 @@
 
 <!-- HOME -->
 <section id="home" class="active">
-  <h2 style="text-align:center; font-family:'Space Grotesk'; text-shadow:0 0 10px rgba(255,255,255,0.2);">
-    Clean Cars. Premium Finish.
-  </h2>
-  <p style="text-align:center; color:#aaa;">
-    Interior & exterior detailing with a modern touch.
-  </p>
+  <h2>Clean Cars. Premium Finish.</h2>
+  <p style="text-align:center;">Interior & exterior detailing with a modern glow finish.</p>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <h2 style="text-align:center; font-family:'Space Grotesk';">Services</h2>
+  <h2>Services</h2>
 
   <div class="services">
 
@@ -237,42 +249,39 @@
 </section>
 
 <!-- BOOK -->
-<!-- BOOK -->
 <section id="book">
   <div class="form-container">
 
-    <h2 style="text-align:center; font-family:'Space Grotesk';">Book Appointment</h2>
+    <h2>Book Appointment</h2>
 
-    <!-- REAL FORM START -->
-    <form action="https://formspree.io/f/xzdywjod" method="POST">
+    <form action="https://formspree.io/f/xzdywjod" method="POST" id="bookingForm">
 
       <input type="text" name="name" placeholder="Your Name" required>
-
       <input type="text" name="phone" placeholder="Phone Number" required>
 
       <select name="service" required>
-        <option value="Basic Wash">Basic Wash - $25</option>
-        <option value="Interior Detail">Interior Detail - $60</option>
-        <option value="Full Detail">Full Detail - $120</option>
+        <option>Basic Wash - $25</option>
+        <option>Interior Detail - $60</option>
+        <option>Full Detail - $120</option>
       </select>
 
       <input type="date" name="date" required>
-
       <textarea name="message" rows="4" placeholder="Extra details (optional)"></textarea>
 
       <button type="submit">Submit Booking</button>
 
     </form>
-    <!-- REAL FORM END -->
+
+    <p id="successMsg">Booking sent successfully ✔ We’ll contact you soon.</p>
 
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2 style="text-align:center; font-family:'Space Grotesk';">Contact</h2>
+  <h2>Contact</h2>
 
-  <div style="max-width:600px; margin:auto;">
+  <div style="max-width:600px;margin:auto;">
 
     <p class="contact-line">📞 Phone: (123) 456-7890</p>
     <p class="contact-line">📧 Email: tazzydetailing@email.com</p>
@@ -286,6 +295,13 @@ function showTab(tab) {
   document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
   document.getElementById(tab).classList.add("active");
 }
+
+document.getElementById("bookingForm").addEventListener("submit", function () {
+  setTimeout(() => {
+    document.getElementById("successMsg").style.display = "block";
+    this.reset();
+  }, 500);
+});
 </script>
 
 </body>
