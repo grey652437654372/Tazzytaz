@@ -41,6 +41,7 @@
       font-weight: 500;
       letter-spacing: 1px;
       transition: 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -78,7 +79,6 @@
       padding: 25px;
       text-align: center;
       transition: all 0.3s ease;
-      position: relative;
     }
 
     .service-card:hover {
@@ -90,21 +90,14 @@
     .service-title {
       font-size: 18px;
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
+    /* ✅ PRICE ALWAYS VISIBLE */
     .price {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: 0.3s ease;
       font-size: 16px;
-      color: #aaa;
-    }
-
-    .service-card:hover .price {
-      opacity: 1;
-      transform: translateY(0);
-      color: white;
+      color: #fff;
+      margin-top: 8px;
     }
 
     /* CONTACT */
@@ -134,13 +127,22 @@
 <header>Tazzy Auto Detailing</header>
 
 <nav>
-  <a href="#" onclick="showSection('home')">Home</a>
-  <a href="#" onclick="showSection('contact')">Contact</a>
+  <a onclick="showTab('home')">Home</a>
+  <a onclick="showTab('services')">Services</a>
+  <a onclick="showTab('contact')">Contact</a>
 </nav>
 
 <!-- HOME -->
 <section id="home" class="active">
-  <h2 style="text-align:center;">Our Services</h2>
+  <h2 style="text-align:center;">Clean Cars. Premium Finish.</h2>
+  <p style="text-align:center; color:#aaa;">
+    Modern detailing with interior & exterior perfection.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <h2 style="text-align:center;">Services</h2>
 
   <div class="services">
 
@@ -157,11 +159,6 @@
     <div class="service-card">
       <div class="service-title">Full Detail</div>
       <div class="price">$120</div>
-    </div>
-
-    <div class="service-card">
-      <div class="service-title">Wax & Shine</div>
-      <div class="price">$80</div>
     </div>
 
   </div>
@@ -201,9 +198,9 @@
 </section>
 
 <script>
-function showSection(id) {
-  document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+function showTab(tab) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(tab).classList.add("active");
 }
 </script>
 
