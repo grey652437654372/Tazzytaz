@@ -12,12 +12,10 @@
     :root {
       --bg: #070707;
       --glass: rgba(255,255,255,0.05);
-      --glass-strong: rgba(255,255,255,0.08);
       --border: rgba(255,255,255,0.12);
       --text: #eaeaea;
       --muted: #a8a8a8;
       --glow: rgba(255,255,255,0.35);
-      --accent: #ffffff;
     }
 
     * {
@@ -30,6 +28,35 @@
       background: radial-gradient(circle at top, #111 0%, #070707 50%, #000 100%);
       color: var(--text);
       overflow-x: hidden;
+    }
+
+    /* FLOATING GLOW BACKGROUND */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      background: rgba(255,255,255,0.05);
+      filter: blur(120px);
+      z-index: -1;
+      animation: floatGlow 12s infinite ease-in-out;
+    }
+
+    body::before {
+      top: -120px;
+      left: -120px;
+    }
+
+    body::after {
+      bottom: -120px;
+      right: -120px;
+      animation-delay: 2s;
+    }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      50% { transform: translate(40px,30px) scale(1.2); }
     }
 
     /* HEADER */
@@ -66,7 +93,8 @@
       text-decoration: none;
       font-weight: 500;
       border-radius: 10px;
-      transition: 0.25s ease;
+      transition: 0.25s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -76,22 +104,31 @@
       transform: translateY(-2px);
     }
 
+    /* SECTIONS */
     section {
       display: none;
       padding: 70px 20px;
-      animation: fade 0.5s ease;
+      animation: smoothIn 0.7s ease;
     }
 
     .active {
       display: block;
     }
 
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes smoothIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
     }
 
-    /* HEADINGS */
+    /* TITLES */
     h2 {
       font-family: "Space Grotesk", sans-serif;
       font-size: 34px;
@@ -123,9 +160,9 @@
     }
 
     .service-card:hover {
-      transform: translateY(-6px) scale(1.03);
-      border-color: rgba(255,255,255,0.3);
-      box-shadow: 0 0 25px var(--glow);
+      transform: translateY(-10px) scale(1.04);
+      border-color: rgba(255,255,255,0.4);
+      box-shadow: 0 0 35px rgba(255,255,255,0.12);
     }
 
     .service-title {
@@ -141,7 +178,7 @@
       text-shadow: 0 0 10px rgba(255,255,255,0.25);
     }
 
-    /* BOOKING */
+    /* FORM */
     .form-container {
       max-width: 600px;
       margin: auto;
@@ -229,7 +266,6 @@
   <h2>Services</h2>
 
   <div class="services">
-
     <div class="service-card">
       <div class="service-title">Basic Wash</div>
       <div class="price">$25</div>
@@ -244,7 +280,6 @@
       <div class="service-title">Full Detail</div>
       <div class="price">$120</div>
     </div>
-
   </div>
 </section>
 
@@ -282,11 +317,9 @@
   <h2>Contact</h2>
 
   <div style="max-width:600px;margin:auto;">
-
     <p class="contact-line">📞 Phone: (123) 456-7890</p>
     <p class="contact-line">📧 Email: tazzydetailing@email.com</p>
     <p class="contact-line">📸 Instagram: @tazzydetail</p>
-
   </div>
 </section>
 
