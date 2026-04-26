@@ -237,24 +237,33 @@
 </section>
 
 <!-- BOOK -->
+<!-- BOOK -->
 <section id="book">
   <div class="form-container">
 
     <h2 style="text-align:center; font-family:'Space Grotesk';">Book Appointment</h2>
 
-    <input type="text" placeholder="Your Name">
-    <input type="text" placeholder="Phone Number">
+    <!-- REAL FORM START -->
+    <form action="https://formspree.io/f/xzdywjod" method="POST">
 
-    <select>
-      <option>Basic Wash</option>
-      <option>Interior Detail</option>
-      <option>Full Detail</option>
-    </select>
+      <input type="text" name="name" placeholder="Your Name" required>
 
-    <input type="date">
-    <textarea rows="4" placeholder="Extra details"></textarea>
+      <input type="text" name="phone" placeholder="Phone Number" required>
 
-    <button>Submit Booking</button>
+      <select name="service" required>
+        <option value="Basic Wash">Basic Wash - $25</option>
+        <option value="Interior Detail">Interior Detail - $60</option>
+        <option value="Full Detail">Full Detail - $120</option>
+      </select>
+
+      <input type="date" name="date" required>
+
+      <textarea name="message" rows="4" placeholder="Extra details (optional)"></textarea>
+
+      <button type="submit">Submit Booking</button>
+
+    </form>
+    <!-- REAL FORM END -->
 
   </div>
 </section>
