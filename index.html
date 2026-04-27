@@ -57,40 +57,40 @@ body::after{bottom:-120px;right:-120px;animation-delay:2s;}
   padding:50px 20px 10px;
 }
 
-/* 🔥 NEW CD LOGO */
+/* 🔥 CD LOGO */
 .logo{
-  width:70px;
-  height:70px;
-  margin:0 auto 10px;
+  width:82px;
+  height:82px;
+  margin:0 auto 12px;
+
   display:flex;
   align-items:center;
   justify-content:center;
 
-  font-size:26px;
+  border-radius:50%;
+
+  font-size:28px;
   font-weight:800;
   letter-spacing:2px;
+
   color:white;
 
+  background:rgba(255,255,255,0.05);
   border:2px solid rgba(255,255,255,0.25);
-  border-radius:16px;
 
-  background:rgba(255,255,255,0.04);
-  backdrop-filter:blur(10px);
-
-  box-shadow:0 0 25px rgba(255,255,255,0.12);
-  text-shadow:0 0 15px rgba(255,255,255,0.25);
+  box-shadow:0 0 30px rgba(255,255,255,0.15);
 
   animation:pulse 3s infinite ease-in-out;
 }
 
 @keyframes pulse{
   0%,100%{
-    box-shadow:0 0 15px rgba(255,255,255,0.10);
     transform:scale(1);
+    box-shadow:0 0 20px rgba(255,255,255,0.12);
   }
   50%{
-    box-shadow:0 0 35px rgba(255,255,255,0.25);
-    transform:scale(1.05);
+    transform:scale(1.06);
+    box-shadow:0 0 40px rgba(255,255,255,0.25);
   }
 }
 
@@ -154,7 +154,6 @@ section.active{
 /* HERO */
 .hero{
   text-align:center;
-  padding:30px 20px 30px;
 }
 
 .hero h2{
@@ -166,7 +165,7 @@ section.active{
   margin-top:10px;
 }
 
-/* ABOUT BOX */
+/* ABOUT */
 .about-box{
   margin-top:30px;
   padding:20px;
@@ -176,9 +175,6 @@ section.active{
   backdrop-filter:blur(10px);
   text-align:center;
   color:#b8b8b8;
-  max-width:800px;
-  margin-left:auto;
-  margin-right:auto;
   line-height:1.6;
 }
 
@@ -239,6 +235,7 @@ button.submit{
   border:none;
   border-radius:8px;
   font-weight:600;
+  cursor:pointer;
 }
 
 /* CONTACT */
@@ -263,7 +260,6 @@ button.submit{
 <nav>
   <button onclick="showTab('home')">Home</button>
   <button onclick="showTab('services')">Services</button>
-  <button onclick="showTab('gallery')">Before/After</button>
   <button onclick="showTab('reviews')">Reviews</button>
   <button onclick="showTab('book')">Book</button>
   <button onclick="showTab('contact')">Contact</button>
@@ -273,99 +269,79 @@ button.submit{
 <section id="home" class="active">
   <div class="hero">
     <h2>Clean Cars. Clean Trucks. Clean Finish.</h2>
-    <p>High quality mobile detailing at your driveway.</p>
+    <p>Mobile detailing brought right to your driveway.</p>
   </div>
 
   <div class="about-box">
-    <h3 style="color:white;margin-bottom:10px;">About Connell Auto Detail</h3>
-    Connell Auto Detail is a mobile car and truck detailing service based in Senoia, Georgia.  
-    We bring professional-level cleaning directly to your driveway, making it easy and affordable to keep your vehicle looking brand new.<br><br>
-    We specialize in interior deep cleaning, exterior washes, and full details for daily drivers, trucks, and cars.  
-    Our goal is simple — clean, shine, and restore your vehicle without dealership pricing.
+    Connell Auto Detail is a mobile detailing service focused on cars and trucks in Senoia, Georgia.  
+    We provide interior deep cleaning, exterior washing, and full details that restore your vehicle’s shine without dealership pricing.
   </div>
 </section>
 
 <!-- SERVICES -->
-  <section id="services">
+<section id="services">
   <h2 style="text-align:center;">Services</h2>
 
   <div class="grid">
-
     <div class="card">
       <h3>Basic Wash</h3>
-      <p style="color:#b8b8b8;margin-top:8px;">
-        Exterior hand wash, rinse, and dry. Includes tire shine and basic wheel cleaning. Perfect for keeping your car or truck looking clean on a weekly basis.
-      </p>
-      <p style="margin-top:10px;font-weight:600;">$20 - $30</p>
+      <p style="color:#b8b8b8;">Exterior wash, rinse, dry, tire shine, and wheel clean.</p>
+      <p>$20 - $30</p>
     </div>
 
     <div class="card">
       <h3>Interior Clean</h3>
-      <p style="color:#b8b8b8;margin-top:8px;">
-        Full interior vacuum, wipe-down of all surfaces, cup holders, dash, and door panels. Leaves your cabin fresh, clean, and dust-free.
-      </p>
-      <p style="margin-top:10px;font-weight:600;">$35 - $50</p>
+      <p style="color:#b8b8b8;">Vacuum, wipe-down, cup holders, dash, and door panels.</p>
+      <p>$35 - $50</p>
     </div>
 
     <div class="card">
       <h3>Full Detail</h3>
-      <p style="color:#b8b8b8;margin-top:8px;">
-        Complete inside & outside detail. Includes deep interior clean, exterior wash, tire shine, and full refresh. Best option for trucks and heavily used vehicles.
-      </p>
-      <p style="margin-top:10px;font-weight:600;">$60 - $100</p>
+      <p style="color:#b8b8b8;">Full interior + exterior deep clean and shine restoration.</p>
+      <p>$60 - $100</p>
     </div>
-
   </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <h2 style="text-align:center;">Before / After</h2>
 </section>
 
 <!-- REVIEWS -->
 <section id="reviews">
   <h2 style="text-align:center;">Reviews</h2>
+
   <div class="grid">
-    <div class="review">⭐⭐⭐⭐<br>“Truck looked brand new.”</div>
-    <div class="review">⭐⭐⭐⭐⭐<br>“Very clean and professional.”</div>
-    <div class="review">⭐⭐⭐⭐⭐<br>“Will book again.”</div>
+    <div class="review">⭐⭐⭐⭐ “Truck looked brand new.”</div>
+    <div class="review">⭐⭐⭐⭐⭐ “Very clean and professional.”</div>
+    <div class="review">⭐⭐⭐⭐⭐ “Best detailing I’ve had.”</div>
   </div>
 </section>
 
 <!-- BOOK -->
 <section id="book">
+  <h2 style="text-align:center;">Book a Detail</h2>
+
   <form action="https://formspree.io/f/xzdywjod" method="POST">
+    <input name="name" type="text" placeholder="Name" required>
+    <input name="phone" type="text" placeholder="Phone" required>
 
-  <input type="text" name="name" placeholder="Name" required>
+    <select name="service">
+      <option>Basic Wash</option>
+      <option>Interior Clean</option>
+      <option>Full Detail</option>
+    </select>
 
-  <input type="text" name="phone" placeholder="Phone Number" required>
+    <input name="date" type="date" required>
+    <textarea name="notes" placeholder="Notes"></textarea>
 
-  <select name="service" required>
-    <option value="Basic Wash">Basic Wash</option>
-    <option value="Interior Clean">Interior Clean</option>
-    <option value="Full Detail">Full Detail</option>
-  </select>
-
-  <input type="date" name="date" required>
-
-  <textarea name="notes" placeholder="Extra Notes (optional)"></textarea>
-
-  <!-- FIXES FORMSPREE ERROR -->
-  <input type="hidden" name="_subject" value="New Connell Auto Detail Booking">
-  <input type="hidden" name="_captcha" value="false">
-
-  <button class="submit" type="submit">Request Booking</button>
-
-</form>
+    <button class="submit" type="submit">Request Booking</button>
+  </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2 style="text-align:center;">Contact</h2>
+
   <div class="contact">
     📍 Senoia, GA<br>
-    📞 Add your number<br>
+    📞 Your Number Here<br>
     📸 @connellautodetail
   </div>
 </section>
