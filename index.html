@@ -1,308 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Connell Auto Detail</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
   --bg:#0b0b0b;
-  --card:#141414;
-  --text:#f5f5f5;
-  --muted:#b5b5b5;
-  --accent:#ffffff;
+  --card:#151515;
+  --text:#fff;
+  --muted:#aaa;
   --border:rgba(255,255,255,0.08);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 
 body{
-  background: radial-gradient(circle at top,#1a1a1a,#0b0b0b 60%);
+  background:radial-gradient(circle at top,#1a1a1a,#0b0b0b);
   color:var(--text);
-  overflow-x:hidden;
-}
-
-/* HEADER */
-header{
-  padding:22px;
-  text-align:center;
-  font-size:28px;
-  font-weight:700;
-  letter-spacing:1px;
-  border-bottom:1px solid var(--border);
-}
-
-header span{
-  display:block;
-  font-size:13px;
-  color:var(--muted);
-  font-weight:400;
-  margin-top:4px;
 }
 
 /* NAV */
 nav{
   display:flex;
   justify-content:center;
-  gap:12px;
-  padding:12px;
+  gap:10px;
+  padding:15px;
+  background:#111;
   position:sticky;
   top:0;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
   z-index:10;
+  border-bottom:1px solid var(--border);
 }
 
-nav a{
+nav button{
+  background:none;
+  border:none;
   color:var(--muted);
-  text-decoration:none;
-  font-size:14px;
+  cursor:pointer;
   padding:8px 12px;
   border-radius:8px;
-  transition:0.2s;
+  font-size:14px;
 }
 
-nav a:hover{
-  color:white;
+nav button:hover{
+  color:#fff;
   background:rgba(255,255,255,0.06);
 }
 
 /* SECTIONS */
 section{
+  display:none;
   padding:60px 20px;
-  max-width:1000px;
+  max-width:900px;
   margin:auto;
 }
 
-h2{
-  text-align:center;
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-p{
-  color:var(--muted);
-  text-align:center;
-  max-width:600px;
-  margin:auto;
-}
+.active{display:block;}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:70px 20px;
+  padding:80px 20px;
 }
 
 .hero h1{
-  font-size:42px;
-  margin-bottom:10px;
+  font-size:40px;
 }
 
 .hero p{
-  font-size:15px;
+  color:var(--muted);
+  margin-top:10px;
 }
 
-/* SERVICES */
+/* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:16px;
+  gap:15px;
   margin-top:30px;
 }
 
 .card{
   background:var(--card);
-  border:1px solid var(--border);
   padding:20px;
-  border-radius:14px;
-  transition:0.25s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  border-color:rgba(255,255,255,0.25);
+  border-radius:12px;
+  border:1px solid var(--border);
 }
 
 .price{
-  margin-top:8px;
-  font-weight:600;
-  color:white;
-}
-
-/* ABOUT */
-.about{
-  background:rgba(255,255,255,0.02);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:25px;
-  margin-top:20px;
+  margin-top:10px;
+  font-weight:bold;
 }
 
 /* FORM */
 form{
   background:var(--card);
-  padding:25px;
-  border-radius:14px;
+  padding:20px;
+  border-radius:12px;
   border:1px solid var(--border);
-  max-width:600px;
+  max-width:500px;
   margin:auto;
 }
 
 input,select,textarea{
   width:100%;
+  padding:10px;
   margin:8px 0;
-  padding:12px;
-  border-radius:8px;
-  border:1px solid #333;
   background:#0f0f0f;
-  color:white;
-  outline:none;
+  border:1px solid #333;
+  color:#fff;
+  border-radius:8px;
 }
 
-button{
+button.submit{
   width:100%;
-  padding:12px;
+  padding:10px;
+  background:#fff;
+  color:#000;
   border:none;
   border-radius:8px;
-  background:white;
-  color:black;
-  font-weight:600;
   cursor:pointer;
-  margin-top:10px;
-  transition:0.2s;
+  font-weight:600;
 }
 
-button:hover{
-  transform:translateY(-2px);
-}
-
-/* GALLERY */
-.gallery{
-  text-align:center;
-  margin-top:20px;
-  color:var(--muted);
-}
-
-/* CONTACT */
 .contact{
   text-align:center;
   color:var(--muted);
-  font-size:14px;
-  line-height:24px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  font-size:12px;
-  color:#777;
-  border-top:1px solid var(--border);
-  margin-top:40px;
+  line-height:26px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  Connell Auto Detail
-  <span>Mobile Car & Truck Detailing • Senoia, GA</span>
-</header>
-
+<!-- NAV -->
 <nav>
-  <a href="#home">Home</a>
-  <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="#book">Book</a>
-  <a href="#contact">Contact</a>
+  <button onclick="showTab('home')">Home</button>
+  <button onclick="showTab('services')">Services</button>
+  <button onclick="showTab('about')">About</button>
+  <button onclick="showTab('book')">Book</button>
+  <button onclick="showTab('contact')">Contact</button>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>Clean Cars. Clean Trucks. Clean Finish.</h1>
-  <p>Affordable mobile detailing for your driveway. Interior & exterior cleaning done right.</p>
+<!-- HOME -->
+<section id="home" class="active">
+  <div class="hero">
+    <h1>Connell Auto Detail</h1>
+    <p>Mobile Car & Truck Detailing in Senoia, GA</p>
+  </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <h2>Services</h2>
+  <h2 style="text-align:center;">Services</h2>
 
   <div class="grid">
     <div class="card">
-      <h3>Basic Exterior Wash</h3>
-      <p class="price">$20 - $30</p>
-      <p>Foam wash, rinse, dry, wheels cleaned.</p>
+      <h3>Basic Wash</h3>
+      <div class="price">$20 - $30</div>
+      <p style="color:var(--muted);margin-top:5px;">Exterior wash, rinse, dry, wheels cleaned.</p>
     </div>
 
     <div class="card">
       <h3>Interior Clean</h3>
-      <p class="price">$35 - $50</p>
-      <p>Vacuum, dash wipe, cup holders, trash removal.</p>
+      <div class="price">$35 - $50</div>
+      <p style="color:var(--muted);margin-top:5px;">Vacuum, dash wipe, trash removal.</p>
     </div>
 
     <div class="card">
       <h3>Full Detail</h3>
-      <p class="price">$60 - $100</p>
-      <p>Complete inside + outside deep clean.</p>
+      <div class="price">$60 - $100</div>
+      <p style="color:var(--muted);margin-top:5px;">Full inside + outside deep clean.</p>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <h2>About</h2>
-  <div class="about">
-    <p>
-      Connell Auto Detail is a local mobile detailing service based in Senoia, GA.
-      I’m currently building experience and offering affordable detailing for cars and trucks
-      in the neighborhood.
-    </p>
-  </div>
+  <h2 style="text-align:center;">About</h2>
 
-  <div class="gallery">
-    <p>📸 Before & After photos coming soon (add your first truck wash here)</p>
-  </div>
+  <p style="text-align:center;color:var(--muted);max-width:600px;margin:auto;">
+    Connell Auto Detail is a local mobile detailing service based in Senoia, Georgia.
+    I’m currently building experience and offering affordable detailing for cars and trucks in my neighborhood.
+  </p>
 </section>
 
 <!-- BOOK -->
 <section id="book">
-  <h2>Book a Detail</h2>
+  <h2 style="text-align:center;">Book a Detail</h2>
 
   <form action="https://formspree.io/f/xzdywjod" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="text" name="phone" placeholder="Phone Number" required>
 
     <select name="service">
-      <option>Basic Exterior Wash</option>
+      <option>Basic Wash</option>
       <option>Interior Clean</option>
       <option>Full Detail</option>
     </select>
 
-    <input type="date" name="date" required>
-    <textarea name="message" rows="4" placeholder="Extra details (optional)"></textarea>
+    <input type="date" required>
+    <textarea name="message" placeholder="Extra notes (optional)"></textarea>
 
-    <button type="submit">Request Booking</button>
+    <button class="submit" type="submit">Request Booking</button>
   </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
+  <h2 style="text-align:center;">Contact</h2>
+
   <div class="contact">
-    <p>📍 Senoia, Georgia</p>
-    <p>📞 Your Phone Number Here</p>
-    <p>📸 Add Instagram later (@connellautodetail)</p>
+    📍 Senoia, GA<br>
+    📞 Add your number<br>
+    📸 Instagram: @connellautodetail (optional)
   </div>
 </section>
 
-<footer>
-  © 2026 Connell Auto Detail • Built in Senoia, GA
-</footer>
+<script>
+function showTab(tab){
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(tab).classList.add("active");
+}
+</script>
 
 </body>
 </html>
