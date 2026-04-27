@@ -72,6 +72,7 @@ nav{
   backdrop-filter:blur(10px);
   position:sticky;
   top:0;
+  z-index:10;
 }
 
 nav a{
@@ -93,6 +94,18 @@ section{
   margin:auto;
 }
 
+/* FADE-IN */
+.fade-in{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
+}
+
+.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
 /* HERO */
 .hero{
   text-align:center;
@@ -107,7 +120,8 @@ section{
   margin-top:10px;
 }
 
-.cta{
+/* BUTTONS */
+.cta, .submit{
   margin-top:20px;
   padding:14px 24px;
   background:#fff;
@@ -116,6 +130,11 @@ section{
   border-radius:10px;
   font-weight:700;
   cursor:pointer;
+  transition:0.2s ease;
+}
+
+.cta:hover, .submit:hover{
+  transform:scale(1.05);
 }
 
 /* GRID */
@@ -126,17 +145,18 @@ section{
   margin-top:40px;
 }
 
-/* CARD */
+/* CARDS */
 .card{
   background:rgba(255,255,255,0.04);
   border:1px solid var(--border);
   border-radius:16px;
   padding:25px;
-  transition:0.3s;
+  transition:all 0.3s ease;
 }
 
 .card:hover{
-  transform:translateY(-8px);
+  transform:translateY(-12px) scale(1.02);
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
 
 /* FORM */
@@ -155,17 +175,7 @@ input,select,textarea{
   border-radius:8px;
 }
 
-button.submit{
-  width:100%;
-  padding:12px;
-  background:#fff;
-  color:#000;
-  border:none;
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-}
-
+/* CONTACT */
 .contact{
   text-align:center;
   color:var(--muted);
@@ -193,7 +203,7 @@ button.submit{
 </nav>
 
 <!-- HERO -->
-<section id="home">
+<section id="home" class="fade-in">
   <div class="hero">
     <h2>Make Your Car Look Better Than New</h2>
     <p>Mobile detailing in Senoia — we come to you</p>
@@ -201,8 +211,8 @@ button.submit{
   </div>
 </section>
 
-<!-- GALLERY (ADD PHOTOS HERE TOMORROW) -->
-<section id="gallery">
+<!-- GALLERY -->
+<section id="gallery" class="fade-in">
   <h2 style="text-align:center;">Before & After</h2>
   <div class="grid">
     <div class="card">Add photo</div>
@@ -211,8 +221,8 @@ button.submit{
   </div>
 </section>
 
-<!-- WHY CHOOSE US -->
-<section>
+<!-- WHY -->
+<section class="fade-in">
   <h2 style="text-align:center;">Why Choose Us</h2>
   <div class="grid">
     <div class="card">✔ We come to you</div>
@@ -223,7 +233,7 @@ button.submit{
 </section>
 
 <!-- SERVICES -->
-<section id="services">
+<section id="services" class="fade-in">
   <h2 style="text-align:center;">Services</h2>
   <div class="grid">
     <div class="card">
@@ -245,7 +255,7 @@ button.submit{
 </section>
 
 <!-- REVIEWS -->
-<section id="reviews">
+<section id="reviews" class="fade-in">
   <h2 style="text-align:center;">Reviews</h2>
   <div class="grid">
     <div class="card">
@@ -262,7 +272,7 @@ button.submit{
 </section>
 
 <!-- BOOK -->
-<section id="book">
+<section id="book" class="fade-in">
   <h2 style="text-align:center;">Book a Detail</h2>
   <form action="https://formspree.io/f/mzdyqvre" method="POST">
     <input name="name" placeholder="Name" required>
@@ -279,7 +289,7 @@ button.submit{
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="fade-in">
   <h2 style="text-align:center;">Contact</h2>
   <div class="contact">
     📍 Senoia, GA<br>
@@ -287,6 +297,22 @@ button.submit{
     📸 @connelldetailing
   </div>
 </section>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+
+const appearOnScroll = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+faders.forEach(el => {
+  appearOnScroll.observe(el);
+});
+</script>
 
 </body>
 </html>
