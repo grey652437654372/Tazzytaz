@@ -1,341 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tazzy Auto Detailing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Connell Auto Detail</title>
 
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #070707;
-      --glass: rgba(255,255,255,0.05);
-      --border: rgba(255,255,255,0.12);
-      --text: #eaeaea;
-      --muted: #a8a8a8;
-      --glow: rgba(255,255,255,0.35);
-    }
+<style>
+:root{
+  --bg:#0b0b0b;
+  --card:#141414;
+  --text:#f5f5f5;
+  --muted:#b5b5b5;
+  --accent:#ffffff;
+  --border:rgba(255,255,255,0.08);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif;}
 
-    body {
-      margin: 0;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      background: radial-gradient(circle at top, #111 0%, #070707 50%, #000 100%);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+body{
+  background: radial-gradient(circle at top,#1a1a1a,#0b0b0b 60%);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    /* FLOATING GLOW BACKGROUND */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      width: 450px;
-      height: 450px;
-      background: rgba(255,255,255,0.05);
-      filter: blur(120px);
-      z-index: -1;
-      animation: floatGlow 12s infinite ease-in-out;
-    }
+/* HEADER */
+header{
+  padding:22px;
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:1px;
+  border-bottom:1px solid var(--border);
+}
 
-    body::before {
-      top: -120px;
-      left: -120px;
-    }
+header span{
+  display:block;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:400;
+  margin-top:4px;
+}
 
-    body::after {
-      bottom: -120px;
-      right: -120px;
-      animation-delay: 2s;
-    }
+/* NAV */
+nav{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:12px;
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+  z-index:10;
+}
 
-    @keyframes floatGlow {
-      0%, 100% { transform: translate(0,0) scale(1); }
-      50% { transform: translate(40px,30px) scale(1.2); }
-    }
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  padding:8px 12px;
+  border-radius:8px;
+  transition:0.2s;
+}
 
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 24px;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(14px);
-      text-shadow: 0 0 15px var(--glow);
-    }
+nav a:hover{
+  color:white;
+  background:rgba(255,255,255,0.06);
+}
 
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 10px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+/* SECTIONS */
+section{
+  padding:60px 20px;
+  max-width:1000px;
+  margin:auto;
+}
 
-    nav a {
-      padding: 10px 16px;
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 500;
-      border-radius: 10px;
-      transition: 0.25s;
-      cursor: pointer;
-    }
+h2{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:10px;
+}
 
-    nav a:hover {
-      color: white;
-      background: rgba(255,255,255,0.06);
-      box-shadow: 0 0 18px var(--glow);
-      transform: translateY(-2px);
-    }
+p{
+  color:var(--muted);
+  text-align:center;
+  max-width:600px;
+  margin:auto;
+}
 
-    /* SECTIONS */
-    section {
-      display: none;
-      padding: 70px 20px;
-      animation: smoothIn 0.7s ease;
-    }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:70px 20px;
+}
 
-    .active {
-      display: block;
-    }
+.hero h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
 
-    @keyframes smoothIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px) scale(0.98);
-        filter: blur(6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
-      }
-    }
+.hero p{
+  font-size:15px;
+}
 
-    /* TITLES */
-    h2 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 34px;
-      text-align: center;
-      margin-bottom: 25px;
-      text-shadow: 0 0 12px rgba(255,255,255,0.15);
-    }
+/* SERVICES */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:30px;
+}
 
-    p {
-      color: var(--muted);
-    }
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:20px;
+  border-radius:14px;
+  transition:0.25s;
+}
 
-    /* SERVICES */
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-      margin-top: 25px;
-    }
+.card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,0.25);
+}
 
-    .service-card {
-      background: var(--glass);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 25px;
-      text-align: center;
-      transition: 0.3s ease;
-      backdrop-filter: blur(14px);
-    }
+.price{
+  margin-top:8px;
+  font-weight:600;
+  color:white;
+}
 
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.04);
-      border-color: rgba(255,255,255,0.4);
-      box-shadow: 0 0 35px rgba(255,255,255,0.12);
-    }
+/* ABOUT */
+.about{
+  background:rgba(255,255,255,0.02);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:25px;
+  margin-top:20px;
+}
 
-    .service-title {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-    }
+/* FORM */
+form{
+  background:var(--card);
+  padding:25px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  max-width:600px;
+  margin:auto;
+}
 
-    .price {
-      margin-top: 8px;
-      font-weight: 500;
-      color: white;
-      text-shadow: 0 0 10px rgba(255,255,255,0.25);
-    }
+input,select,textarea{
+  width:100%;
+  margin:8px 0;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #333;
+  background:#0f0f0f;
+  color:white;
+  outline:none;
+}
 
-    /* FORM */
-    .form-container {
-      max-width: 600px;
-      margin: auto;
-      background: var(--glass);
-      border: 1px solid var(--border);
-      padding: 25px;
-      border-radius: 14px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 25px rgba(255,255,255,0.05);
-    }
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:white;
+  color:black;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:10px;
+  transition:0.2s;
+}
 
-    input, select, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      background: #111;
-      border: 1px solid #333;
-      color: white;
-      border-radius: 8px;
-      outline: none;
-      transition: 0.25s;
-      font-family: inherit;
-    }
+button:hover{
+  transform:translateY(-2px);
+}
 
-    input:focus, select:focus, textarea:focus {
-      border-color: white;
-      box-shadow: 0 0 12px var(--glow);
-    }
+/* GALLERY */
+.gallery{
+  text-align:center;
+  margin-top:20px;
+  color:var(--muted);
+}
 
-    button {
-      width: 100%;
-      padding: 12px;
-      background: white;
-      color: black;
-      border: none;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.25s;
-      margin-top: 10px;
-    }
+/* CONTACT */
+.contact{
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+  line-height:24px;
+}
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 25px var(--glow);
-    }
-
-    #successMsg {
-      display: none;
-      text-align: center;
-      color: lightgreen;
-      margin-top: 12px;
-    }
-
-    /* CONTACT */
-    .contact-line {
-      margin: 10px 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #ddd;
-    }
-  </style>
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  font-size:12px;
+  color:#777;
+  border-top:1px solid var(--border);
+  margin-top:40px;
+}
+</style>
 </head>
 
 <body>
 
-<header>Tazzy Auto Detailing</header>
+<header>
+  Connell Auto Detail
+  <span>Mobile Car & Truck Detailing • Senoia, GA</span>
+</header>
 
 <nav>
-  <a onclick="showTab('home')">Home</a>
-  <a onclick="showTab('services')">Services</a>
-  <a onclick="showTab('book')">Book</a>
-  <a onclick="showTab('contact')">Contact</a>
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#book">Book</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="active">
-  <h2>Clean Cars. Premium Finish.</h2>
-  <p style="text-align:center;">Interior & exterior detailing with a modern glow finish.</p>
+<!-- HERO -->
+<section id="home" class="hero">
+  <h1>Clean Cars. Clean Trucks. Clean Finish.</h1>
+  <p>Affordable mobile detailing for your driveway. Interior & exterior cleaning done right.</p>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
   <h2>Services</h2>
 
-  <div class="services">
-    <div class="service-card">
-      <div class="service-title">Basic Wash</div>
-      <div class="price">$25</div>
+  <div class="grid">
+    <div class="card">
+      <h3>Basic Exterior Wash</h3>
+      <p class="price">$20 - $30</p>
+      <p>Foam wash, rinse, dry, wheels cleaned.</p>
     </div>
 
-    <div class="service-card">
-      <div class="service-title">Interior Detail</div>
-      <div class="price">$60</div>
+    <div class="card">
+      <h3>Interior Clean</h3>
+      <p class="price">$35 - $50</p>
+      <p>Vacuum, dash wipe, cup holders, trash removal.</p>
     </div>
 
-    <div class="service-card">
-      <div class="service-title">Full Detail</div>
-      <div class="price">$120</div>
+    <div class="card">
+      <h3>Full Detail</h3>
+      <p class="price">$60 - $100</p>
+      <p>Complete inside + outside deep clean.</p>
     </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About</h2>
+  <div class="about">
+    <p>
+      Connell Auto Detail is a local mobile detailing service based in Senoia, GA.
+      I’m currently building experience and offering affordable detailing for cars and trucks
+      in the neighborhood.
+    </p>
+  </div>
+
+  <div class="gallery">
+    <p>📸 Before & After photos coming soon (add your first truck wash here)</p>
   </div>
 </section>
 
 <!-- BOOK -->
 <section id="book">
-  <div class="form-container">
+  <h2>Book a Detail</h2>
 
-    <h2>Book Appointment</h2>
+  <form action="https://formspree.io/f/xzdywjod" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
 
-    <form action="https://formspree.io/f/xzdywjod" method="POST" id="bookingForm">
+    <select name="service">
+      <option>Basic Exterior Wash</option>
+      <option>Interior Clean</option>
+      <option>Full Detail</option>
+    </select>
 
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="date" name="date" required>
+    <textarea name="message" rows="4" placeholder="Extra details (optional)"></textarea>
 
-      <select name="service" required>
-        <option>Basic Wash - $25</option>
-        <option>Interior Detail - $60</option>
-        <option>Full Detail - $120</option>
-      </select>
-
-      <input type="date" name="date" required>
-      <textarea name="message" rows="4" placeholder="Extra details (optional)"></textarea>
-
-      <button type="submit">Submit Booking</button>
-
-    </form>
-
-    <p id="successMsg">Booking sent successfully ✔ We’ll contact you soon.</p>
-
-  </div>
+    <button type="submit">Request Booking</button>
+  </form>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-
-  <div style="max-width:600px;margin:auto;">
-    <p class="contact-line">📞 Phone: (123) 456-7890</p>
-    <p class="contact-line">📧 Email: tazzydetailing@email.com</p>
-    <p class="contact-line">📸 Instagram: @tazzydetail</p>
+  <div class="contact">
+    <p>📍 Senoia, Georgia</p>
+    <p>📞 Your Phone Number Here</p>
+    <p>📸 Add Instagram later (@connellautodetail)</p>
   </div>
 </section>
 
-<script>
-function showTab(tab) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(tab).classList.add("active");
-}
-
-document.getElementById("bookingForm").addEventListener("submit", function () {
-  setTimeout(() => {
-    document.getElementById("successMsg").style.display = "block";
-    this.reset();
-  }, 500);
-});
-</script>
+<footer>
+  © 2026 Connell Auto Detail • Built in Senoia, GA
+</footer>
 
 </body>
 </html>
