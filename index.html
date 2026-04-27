@@ -22,23 +22,19 @@
   font-family:Inter,sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
   background:radial-gradient(circle at top,#1a1a1a,#0a0a0a 60%);
   color:var(--text);
 }
 
-/* CONTAINER */
 .container{
   max-width:1000px;
   margin:auto;
   padding:0 20px;
 }
 
-/* HEADER */
 .header{
   text-align:center;
   padding:60px 20px 20px;
@@ -69,7 +65,6 @@ body{
   font-size:14px;
 }
 
-/* NAV */
 nav{
   display:flex;
   justify-content:center;
@@ -94,36 +89,28 @@ nav a:hover{
   background:rgba(255,255,255,0.08);
 }
 
-/* SECTIONS */
-section{
-  padding:100px 0;
-}
+section{padding:100px 0;}
 
-/* TITLES */
 .section-title{
   text-align:center;
   font-size:28px;
   margin-bottom:40px;
 }
 
-/* HERO */
 .hero{
   text-align:center;
-  max-width:600px;
+  max-width:650px;
   margin:auto;
 }
 
-.hero h2{
-  font-size:34px;
-}
+.hero h2{font-size:34px;}
 
 .hero p{
   color:var(--muted);
   margin-top:10px;
 }
 
-/* BUTTONS */
-.cta, .submit{
+.cta,.submit{
   margin-top:20px;
   padding:14px 24px;
   background:#fff;
@@ -135,24 +122,21 @@ section{
   transition:0.2s ease;
 }
 
-.cta:hover, .submit:hover{
+.cta:hover,.submit:hover{
   transform:scale(1.05);
 }
 
-/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
 }
 
-/* CARDS */
 .card{
   background:rgba(255,255,255,0.04);
   border:1px solid var(--border);
   border-radius:16px;
   padding:24px;
-  height:100%;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
@@ -164,17 +148,11 @@ section{
   box-shadow:0 10px 40px rgba(0,0,0,0.4);
 }
 
-.card h3{
-  margin-bottom:10px;
-}
-
 .card p{
-  margin-bottom:10px;
-  line-height:1.5;
   color:var(--muted);
+  line-height:1.5;
 }
 
-/* FORM */
 form{
   max-width:500px;
   margin:40px auto 0;
@@ -190,7 +168,6 @@ input,select,textarea{
   border-radius:8px;
 }
 
-/* CONTACT */
 .contact{
   text-align:center;
   color:var(--muted);
@@ -198,7 +175,6 @@ input,select,textarea{
   line-height:30px;
 }
 
-/* FADE-IN */
 .fade-in{
   opacity:0;
   transform:translateY(40px);
@@ -214,14 +190,12 @@ input,select,textarea{
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">CD</div>
   <div class="title">Connell Detailing</div>
   <div class="tagline">Mobile Car Detailing • Senoia, GA</div>
 </div>
 
-<!-- NAV -->
 <nav>
   <a href="#home">Home</a>
   <a href="#gallery">Gallery</a>
@@ -231,18 +205,20 @@ input,select,textarea{
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
 <section id="home" class="fade-in">
   <div class="container">
     <div class="hero">
-      <h2>Make Your Car Look Better Than New</h2>
-      <p>Mobile detailing in Senoia — we come to you</p>
+      <h2>Mobile Car Detailing in Senoia, GA</h2>
+      <p>We come to your driveway and make your car look like new — fast, affordable, and reliable.</p>
       <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Now</button>
+    </div>
+
+    <div style="margin-top:30px;text-align:center;color:#b8b8b8;">
+      ✔ We Come To You &nbsp;&nbsp; ✔ Affordable Pricing &nbsp;&nbsp; ✔ Attention to Detail &nbsp;&nbsp; ✔ Local & Reliable
     </div>
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery" class="fade-in">
   <div class="container">
     <h2 class="section-title">Before & After</h2>
@@ -254,88 +230,94 @@ input,select,textarea{
   </div>
 </section>
 
-<!-- WHY -->
 <section class="fade-in">
   <div class="container">
-    <h2 class="section-title">Why Choose Us</h2>
+    <h2 class="section-title">Why Choose Connell Detailing</h2>
     <div class="grid">
-      <div class="card">✔ We come to you</div>
-      <div class="card">✔ Affordable pricing</div>
-      <div class="card">✔ Fast service</div>
+      <div class="card">✔ We come to you — no waiting</div>
+      <div class="card">✔ We take our time and don’t rush jobs</div>
+      <div class="card">✔ We focus on the small details others miss</div>
+      <div class="card">✔ Local service you can trust</div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services" class="fade-in">
   <div class="container">
     <h2 class="section-title">Services</h2>
     <div class="grid">
       <div class="card">
         <h3>Basic Wash</h3>
-        <p>Exterior wash and tire shine</p>
-        <p>Starting at $30</p>
+        <p>• Exterior wash<br>• Wheels cleaned<br>• Tire shine</p>
+        <p><strong>$30</strong></p>
       </div>
+
       <div class="card">
         <h3>Interior Clean</h3>
-        <p>Vacuum and wipe-down</p>
-        <p>Starting at $50</p>
+        <p>• Vacuum<br>• Full wipe down<br>• Cup holders + vents</p>
+        <p><strong>$50</strong></p>
       </div>
+
       <div class="card">
-        <h3>Full Detail</h3>
-        <p>Full interior + exterior</p>
-        <p>Starting at $100</p>
+        <h3>Full Detail 🔥 (Most Popular)</h3>
+        <p>• Interior + exterior<br>• Deep clean<br>• Full refresh</p>
+        <p><strong>$100</strong></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
 <section id="reviews" class="fade-in">
   <div class="container">
     <h2 class="section-title">Reviews</h2>
     <div class="grid">
-      <div class="card">
-        ⭐⭐⭐⭐⭐<br>
-        “Looks brand new again”<br>
-        – Jake R., Silverado
-      </div>
-      <div class="card">
-        ⭐⭐⭐⭐⭐<br>
-        “Super clean and fast”<br>
-        – Amber C., Pathfinder
-      </div>
+      <div class="card">⭐⭐⭐⭐⭐<br>“Looks brand new again”<br>– Jake R.</div>
+      <div class="card">⭐⭐⭐⭐⭐<br>“Super clean and fast”<br>– Amber C.</div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px;">
+      <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Your Detail</button>
     </div>
   </div>
 </section>
 
-<!-- BOOK -->
 <section id="book" class="fade-in">
   <div class="container">
     <h2 class="section-title">Book a Detail</h2>
+
+    <p style="text-align:center;color:#b8b8b8;">
+      Fill this out and we’ll confirm your appointment quickly. Spots are limited this week.
+    </p>
+
     <form action="https://formspree.io/f/mzdyqvre" method="POST">
       <input name="name" placeholder="Name" required>
       <input name="phone" placeholder="Phone" required>
       <input name="vehicle" placeholder="Vehicle" required>
+
       <select name="service">
         <option>Basic Wash</option>
         <option>Interior Clean</option>
         <option>Full Detail</option>
       </select>
+
       <input name="date" type="date" required>
       <textarea name="notes" placeholder="Notes"></textarea>
+
       <button class="submit">Request Booking</button>
     </form>
+
+    <p style="text-align:center;margin-top:20px;color:#b8b8b8;">
+      We don’t leave until you’re satisfied.
+    </p>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="fade-in">
   <div class="container">
     <h2 class="section-title">Contact</h2>
     <div class="contact">
       📍 Senoia, GA<br>
-      📞 Your Number<br>
+      📞 YOUR NUMBER HERE<br>
       📸 @connelldetailing
     </div>
   </div>
@@ -344,17 +326,15 @@ input,select,textarea{
 <script>
 const faders = document.querySelectorAll('.fade-in');
 
-const appearOnScroll = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add('visible');
     }
   });
-}, { threshold: 0.2 });
+},{threshold:0.2});
 
-faders.forEach(el => {
-  appearOnScroll.observe(el);
-});
+faders.forEach(el=>observer.observe(el));
 </script>
 
 </body>
