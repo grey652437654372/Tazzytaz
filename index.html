@@ -12,17 +12,51 @@
   --bg:#0a0a0a;
   --card:rgba(255,255,255,0.05);
   --text:#fff;
-  --muted:#b5b5b5;
+  --muted:#b8b8b8;
   --border:rgba(255,255,255,0.08);
-  --glow:rgba(255,255,255,0.2);
+  --glow:rgba(255,255,255,0.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
 
 body{
   background:radial-gradient(circle at top,#1a1a1a,#0a0a0a 60%);
   color:var(--text);
   overflow-x:hidden;
+}
+
+/* SOFT ANIMATED GLOW BACKGROUND */
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  width:450px;
+  height:450px;
+  background:rgba(255,255,255,0.06);
+  filter:blur(130px);
+  z-index:-1;
+  animation:floatGlow 12s infinite ease-in-out;
+}
+
+body::before{
+  top:-120px;
+  left:-120px;
+}
+
+body::after{
+  bottom:-120px;
+  right:-120px;
+  animation-delay:2s;
+}
+
+@keyframes floatGlow{
+  0%,100%{transform:translate(0,0) scale(1);}
+  50%{transform:translate(40px,30px) scale(1.2);}
 }
 
 /* NAV */
@@ -32,7 +66,7 @@ nav{
   gap:10px;
   padding:14px;
   background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(14px);
   position:sticky;
   top:0;
   z-index:10;
@@ -46,22 +80,26 @@ nav button{
   cursor:pointer;
   padding:8px 12px;
   border-radius:8px;
-  transition:0.2s;
+  transition:0.25s;
 }
 
 nav button:hover{
   color:#fff;
-  background:rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.08);
+  box-shadow:0 0 18px var(--glow);
+  transform:translateY(-2px);
 }
 
-/* SECTIONS + SCROLL ANIMATION */
+/* SECTIONS (SMOOTH REVEAL ANIMATION) */
 section{
   display:none;
   padding:70px 20px;
   max-width:1000px;
   margin:auto;
+
   opacity:0;
-  transform:translateY(40px);
+  transform:translateY(30px);
+  filter:blur(6px);
   transition:0.6s ease;
 }
 
@@ -69,23 +107,30 @@ section.active{
   display:block;
   opacity:1;
   transform:translateY(0);
+  filter:blur(0);
 }
 
-/* LOGO HEADER */
+/* LOGO */
 .logo{
   text-align:center;
   padding:40px 20px 10px;
-  font-size:34px;
+  font-size:36px;
   font-weight:800;
   letter-spacing:2px;
-  position:relative;
+
+  text-shadow:0 0 20px var(--glow);
+  animation:pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow{
+  0%,100%{text-shadow:0 0 10px var(--glow);}
+  50%{text-shadow:0 0 25px rgba(255,255,255,0.4);}
 }
 
 .logo span{
   display:block;
   font-size:12px;
   color:var(--muted);
-  font-weight:400;
   margin-top:6px;
 }
 
@@ -95,11 +140,17 @@ section.active{
   padding:30px 20px 50px;
 }
 
-.hero p{
-  color:var(--muted);
+.hero h2{
+  font-size:32px;
+  text-shadow:0 0 18px rgba(255,255,255,0.2);
 }
 
-/* SERVICES */
+.hero p{
+  color:var(--muted);
+  margin-top:10px;
+}
+
+/* CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -112,40 +163,37 @@ section.active{
   border:1px solid var(--border);
   border-radius:14px;
   padding:20px;
-  transition:0.3s;
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
+
+  transition:0.3s ease;
+  box-shadow:0 0 0 rgba(0,0,0,0);
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 0 25px var(--glow);
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 0 35px rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.25);
 }
 
-.price{
-  margin-top:8px;
-  font-weight:700;
-}
-
-/* BEFORE AFTER SLIDER */
+/* BEFORE/AFTER */
 .slider{
-  position:relative;
-  width:100%;
+  margin:25px auto;
   max-width:600px;
-  margin:30px auto;
   border-radius:14px;
   overflow:hidden;
   border:1px solid var(--border);
+
+  transition:0.4s;
+}
+
+.slider:hover{
+  transform:scale(1.02);
+  box-shadow:0 0 25px var(--glow);
 }
 
 .slider img{
   width:100%;
   display:block;
-}
-
-.slider-label{
-  text-align:center;
-  color:var(--muted);
-  margin-top:10px;
 }
 
 /* REVIEWS */
@@ -161,6 +209,13 @@ section.active{
   padding:18px;
   border-radius:12px;
   border:1px solid var(--border);
+
+  transition:0.3s;
+}
+
+.review:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 25px rgba(255,255,255,0.1);
 }
 
 .review p{
@@ -174,8 +229,14 @@ form{
   padding:25px;
   border-radius:14px;
   border:1px solid var(--border);
+  backdrop-filter:blur(12px);
   max-width:500px;
   margin:auto;
+  transition:0.3s;
+}
+
+form:hover{
+  box-shadow:0 0 30px rgba(255,255,255,0.08);
 }
 
 input,select,textarea{
@@ -186,6 +247,13 @@ input,select,textarea{
   border:1px solid #333;
   color:#fff;
   border-radius:8px;
+  transition:0.2s;
+}
+
+input:focus,select:focus,textarea:focus{
+  border-color:#fff;
+  box-shadow:0 0 12px var(--glow);
+  outline:none;
 }
 
 button.submit{
@@ -197,12 +265,12 @@ button.submit{
   border-radius:8px;
   font-weight:600;
   cursor:pointer;
-  transition:0.2s;
+  transition:0.25s;
 }
 
 button.submit:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 20px var(--glow);
+  transform:translateY(-3px);
+  box-shadow:0 0 25px var(--glow);
 }
 
 /* CONTACT */
@@ -216,13 +284,11 @@ button.submit:hover{
 
 <body>
 
-<!-- LOGO -->
 <div class="logo">
   Ⓒ CONNELL
   <span>Auto Detail • Senoia, GA</span>
 </div>
 
-<!-- NAV -->
 <nav>
   <button onclick="showTab('home')">Home</button>
   <button onclick="showTab('services')">Services</button>
@@ -236,7 +302,7 @@ button.submit:hover{
 <section id="home" class="active">
   <div class="hero">
     <h2>Clean Cars. Clean Trucks. Clean Finish.</h2>
-    <p>Mobile detailing service built for your driveway.</p>
+    <p>Mobile detailing that comes to your driveway.</p>
   </div>
 </section>
 
@@ -247,17 +313,17 @@ button.submit:hover{
   <div class="grid">
     <div class="card">
       <h3>Basic Wash</h3>
-      <div class="price">$20 - $30</div>
+      <p>$20 - $30</p>
     </div>
 
     <div class="card">
       <h3>Interior Clean</h3>
-      <div class="price">$35 - $50</div>
+      <p>$35 - $50</p>
     </div>
 
     <div class="card">
       <h3>Full Detail</h3>
-      <div class="price">$60 - $100</div>
+      <p>$60 - $100</p>
     </div>
   </div>
 </section>
@@ -267,34 +333,32 @@ button.submit:hover{
   <h2 style="text-align:center;">Before & After</h2>
 
   <div class="slider">
-    <img src="https://via.placeholder.com/800x400?text=Before+Image" alt="before">
+    <img src="https://via.placeholder.com/800x400?text=Before+Photo">
   </div>
 
   <div class="slider">
-    <img src="https://via.placeholder.com/800x400?text=After+Image" alt="after">
+    <img src="https://via.placeholder.com/800x400?text=After+Photo">
   </div>
-
-  <p class="slider-label">Replace these with your real truck/car photos</p>
 </section>
 
 <!-- REVIEWS -->
 <section id="reviews">
-  <h2 style="text-align:center;">Customer Reviews</h2>
+  <h2 style="text-align:center;">Reviews</h2>
 
   <div class="reviews">
     <div class="review">
       ⭐⭐⭐⭐⭐
-      <p>“My truck looked brand new after a full clean. Very impressed.”</p>
+      <p>“Truck looked brand new after cleaning.”</p>
     </div>
 
     <div class="review">
       ⭐⭐⭐⭐⭐
-      <p>“Fast, clean, and affordable. Definitely calling again.”</p>
+      <p>“Fast, clean, and professional for the price.”</p>
     </div>
 
     <div class="review">
       ⭐⭐⭐⭐⭐
-      <p>“Great job for a first-time detail. Really professional.”</p>
+      <p>“Definitely booking again.”</p>
     </div>
   </div>
 </section>
@@ -305,7 +369,7 @@ button.submit:hover{
 
   <form action="https://formspree.io/f/xzdywjod" method="POST">
     <input type="text" name="name" placeholder="Name" required>
-    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="text" name="phone" placeholder="Phone" required>
 
     <select name="service">
       <option>Basic Wash</option>
@@ -313,10 +377,10 @@ button.submit:hover{
       <option>Full Detail</option>
     </select>
 
-    <input type="date" required>
-    <textarea placeholder="Notes (optional)"></textarea>
+    <input type="date">
+    <textarea placeholder="Notes"></textarea>
 
-    <button class="submit" type="submit">Request Booking</button>
+    <button class="submit">Request Booking</button>
   </form>
 </section>
 
