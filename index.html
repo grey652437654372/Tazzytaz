@@ -48,16 +48,10 @@ body{
   align-items:center;
   justify-content:center;
   border-radius:50%;
+  font-size:28px;
+  font-weight:800;
   background:rgba(255,255,255,0.05);
   border:2px solid rgba(255,255,255,0.25);
-  overflow:hidden;
-}
-
-/* ✅ FIXED LOGO SIZING */
-.logo img{
-  width:70%;
-  height:70%;
-  object-fit:contain;
 }
 
 .title{
@@ -197,10 +191,9 @@ input,select,textarea{
 <body>
 
 <div class="header">
-  <div class="logo">
-    <img src="images/logo.png" alt="Connell Detailing Logo">
-  </div>
-
+<div class="logo">
+  <img src="images/logo.png" alt="Connell Detailing Logo">
+</div>
   <div class="title">Connell Detailing</div>
   <div class="tagline">Mobile Car Detailing • Senoia, GA</div>
 </div>
@@ -217,17 +210,138 @@ input,select,textarea{
 <section id="home" class="fade-in">
   <div class="container">
     <div class="hero">
-      <p style="color:#b8b8b8; font-size:13px; margin-bottom:10px;">
-        || Customer Provides Driveway Space & Water Access ||
-      </p>
+  <p style="color:#b8b8b8; font-size:13px; margin-bottom:10px;">
+    || Customer Provides Driveway Space & Water Access ||
+  </p>
 
-      <h2>Mobile Car Detailing in Senoia, GA</h2>
-      <p>We come to your driveway and make your car look like new — fast, affordable, and reliable.</p>
+  <h2>Mobile Car Detailing in Senoia, GA</h2>
+  <p>We come to your driveway and make your car look like new — fast, affordable, and reliable.</p>
 
-      <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Now</button>
+  <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Now</button>
+</div>
+
+    <div style="margin-top:30px;text-align:center;color:#b8b8b8;">
+      ✔ We Come To You &nbsp;&nbsp; ✔ Affordable Pricing &nbsp;&nbsp; ✔ Attention to Detail &nbsp;&nbsp; ✔ Local & Reliable
     </div>
   </div>
 </section>
+
+<section id="gallery" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Before & After</h2>
+    <div class="grid">
+      <div class="card">Add photo</div>
+      <div class="card">Add photo</div>
+      <div class="card">Add photo</div>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Why Choose Connell Detailing</h2>
+    <div class="grid">
+      <div class="card">✔ We come to you — no waiting</div>
+      <div class="card">✔ We take our time and don’t rush jobs</div>
+      <div class="card">✔ We focus on the small details others miss</div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Services</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Basic Wash</h3>
+        <p>• Exterior wash<br>• Wheels cleaned<br>• Tire shine</p>
+        <p><strong>$30</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Interior Clean</h3>
+        <p>• Vacuum<br>• Full wipe down<br>• Cup holders + vents</p>
+        <p><strong>$50</strong></p>
+      </div>
+
+      <div class="card">
+        <h3>Full Detail 🔥 (Most Popular)</h3>
+        <p>• Interior + exterior<br>• Deep clean<br>• Full refresh</p>
+        <p><strong>$100</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Reviews</h2>
+    <div class="grid">
+      <div class="card">⭐⭐⭐⭐⭐<br>“Looks brand new again”<br>– Jake R.</div>
+      <div class="card">⭐⭐⭐⭐⭐<br>“Super clean and fast”<br>– Amber C.</div>
+    </div>
+
+    <div style="text-align:center;margin-top:20px;">
+      <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Your Detail</button>
+    </div>
+  </div>
+</section>
+
+<section id="book" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Book a Detail</h2>
+
+    <p style="text-align:center;color:#b8b8b8;">
+      Fill this out and we’ll confirm your appointment quickly. Spots are limited this week.
+    </p>
+
+    <form action="https://formspree.io/f/mzdyqvre" method="POST">
+      <input name="name" placeholder="Name" required>
+      <input name="phone" placeholder="Phone" required>
+      <input name="vehicle" placeholder="Vehicle" required>
+
+      <select name="service">
+        <option>Basic Wash</option>
+        <option>Interior Clean</option>
+        <option>Full Detail</option>
+      </select>
+
+      <input name="date" type="date" required>
+      <textarea name="notes" placeholder="Notes"></textarea>
+
+      <button class="submit">Request Booking</button>
+    </form>
+
+    <p style="text-align:center;margin-top:20px;color:#b8b8b8;">
+      We don’t leave until you’re satisfied.
+    </p>
+  </div>
+</section>
+
+<section id="contact" class="fade-in">
+  <div class="container">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact">
+      📍 Senoia, GA<br>
+      📞 YOUR NUMBER HERE<br>
+      📸 @connelldetailing
+    </div>
+  </div>
+</section>
+
+<script>
+const faders = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
+
+faders.forEach(el=>observer.observe(el));
+</script>
 
 </body>
 </html>
