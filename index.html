@@ -10,11 +10,9 @@
 <style>
 :root{
   --bg:#0a0a0a;
-  --card:rgba(255,255,255,0.05);
   --text:#fff;
   --muted:#b8b8b8;
   --border:rgba(255,255,255,0.08);
-  --glow:rgba(255,255,255,0.25);
 }
 
 *{
@@ -24,68 +22,33 @@
   font-family:Inter,sans-serif;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   background:radial-gradient(circle at top,#1a1a1a,#0a0a0a 60%);
   color:var(--text);
-  overflow-x:hidden;
-}
-
-/* BACKGROUND GLOW */
-body::before,
-body::after{
-  content:"";
-  position:fixed;
-  width:450px;
-  height:450px;
-  background:rgba(255,255,255,0.06);
-  filter:blur(130px);
-  z-index:-1;
-  animation:floatGlow 12s infinite ease-in-out;
-}
-
-body::before{top:-120px;left:-120px;}
-body::after{bottom:-120px;right:-120px;animation-delay:2s;}
-
-@keyframes floatGlow{
-  0%,100%{transform:translate(0,0) scale(1);}
-  50%{transform:translate(40px,30px) scale(1.2);}
 }
 
 /* HEADER */
 .header{
   text-align:center;
-  padding:50px 20px 10px;
+  padding:60px 20px 20px;
 }
 
-/* LOGO */
 .logo{
   width:82px;
   height:82px;
   margin:0 auto 12px;
-
   display:flex;
   align-items:center;
   justify-content:center;
-
   border-radius:50%;
-
   font-size:28px;
   font-weight:800;
-  letter-spacing:2px;
-
-  color:white;
-
   background:rgba(255,255,255,0.05);
   border:2px solid rgba(255,255,255,0.25);
-
-  box-shadow:0 0 30px rgba(255,255,255,0.15);
-
-  animation:pulse 3s infinite ease-in-out;
-}
-
-@keyframes pulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.06);}
 }
 
 .title{
@@ -103,46 +66,31 @@ body::after{bottom:-120px;right:-120px;animation-delay:2s;}
 nav{
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
   padding:14px;
-  margin-top:20px;
   background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(12px);
+  backdrop-filter:blur(10px);
   position:sticky;
   top:0;
-  z-index:10;
-  border-bottom:1px solid var(--border);
 }
 
-nav button{
-  background:none;
-  border:none;
+nav a{
+  text-decoration:none;
   color:var(--muted);
-  cursor:pointer;
   padding:8px 12px;
   border-radius:8px;
 }
 
-nav button:hover{
+nav a:hover{
   color:#fff;
-  background:rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.08);
 }
 
 /* SECTIONS */
 section{
-  display:none;
-  padding:90px 20px;
+  padding:120px 20px;
   max-width:1000px;
   margin:auto;
-  opacity:0;
-  transform:translateY(30px);
-  transition:0.6s ease;
-}
-
-section.active{
-  display:block;
-  opacity:1;
-  transform:translateY(0);
 }
 
 /* HERO */
@@ -151,7 +99,7 @@ section.active{
 }
 
 .hero h2{
-  font-size:30px;
+  font-size:34px;
 }
 
 .hero p{
@@ -159,76 +107,40 @@ section.active{
   margin-top:10px;
 }
 
-/* ABOUT */
-.about-box{
-  margin-top:30px;
-  padding:20px;
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:14px;
-  backdrop-filter:blur(10px);
-  text-align:center;
-  color:#b8b8b8;
-  line-height:1.6;
+.cta{
+  margin-top:20px;
+  padding:14px 24px;
+  background:#fff;
+  color:#000;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
 }
 
-/* GRID FIX (IMPORTANT) */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:25px;
   margin-top:40px;
-  padding:10px;
 }
 
-/* CARD FIX */
+/* CARD */
 .card{
   background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
+  border:1px solid var(--border);
   border-radius:16px;
   padding:25px;
-
-  text-align:left;
-
-  transition:0.3s ease;
-
-  backdrop-filter:blur(10px);
-}
-
-.card h3{
-  margin-bottom:10px;
-  font-size:18px;
-}
-
-.card p{
-  line-height:1.5;
-  color:#b8b8b8;
-  font-size:14px;
-  margin-bottom:10px;
+  transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 35px rgba(255,255,255,0.12);
-  border-color:rgba(255,255,255,0.2);
-}
-
-/* REVIEWS FIX */
-.review{
-  background:rgba(255,255,255,0.04);
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:16px;
-  padding:20px;
-  line-height:1.6;
-  text-align:left;
+  transform:translateY(-8px);
 }
 
 /* FORM */
 form{
-  background:rgba(255,255,255,0.04);
-  padding:25px;
-  border-radius:14px;
-  border:1px solid var(--border);
   max-width:500px;
   margin:auto;
 }
@@ -254,11 +166,9 @@ button.submit{
   cursor:pointer;
 }
 
-/* CONTACT */
 .contact{
   text-align:center;
   color:var(--muted);
-  line-height:28px;
 }
 </style>
 </head>
@@ -269,52 +179,67 @@ button.submit{
 <div class="header">
   <div class="logo">CD</div>
   <div class="title">Connell Detailing</div>
-  <div class="tagline">Mobile Car & Truck Detailing • Senoia, GA</div>
+  <div class="tagline">Mobile Car Detailing • Senoia, GA</div>
 </div>
 
 <!-- NAV -->
 <nav>
-  <button onclick="showTab('home')">Home</button>
-  <button onclick="showTab('services')">Services</button>
-  <button onclick="showTab('reviews')">Reviews</button>
-  <button onclick="showTab('book')">Book</button>
-  <button onclick="showTab('contact')">Contact</button>
+  <a href="#home">Home</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#services">Services</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#book">Book</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<!-- HOME -->
-<section id="home" class="active">
+<!-- HERO -->
+<section id="home">
   <div class="hero">
-    <h2>Clean Cars. Clean Trucks. Clean Finish.</h2>
-    <p>Mobile detailing brought right to your driveway.</p>
+    <h2>Make Your Car Look Better Than New</h2>
+    <p>Mobile detailing in Senoia — we come to you</p>
+    <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Now</button>
   </div>
+</section>
 
-  <div class="about-box">
-    Connell Auto Detail is a mobile detailing service focused on cars and trucks in Senoia, Georgia.  
-    We provide interior deep cleaning, exterior washing, and full details that restore your vehicle’s shine.
+<!-- GALLERY (ADD PHOTOS HERE TOMORROW) -->
+<section id="gallery">
+  <h2 style="text-align:center;">Before & After</h2>
+  <div class="grid">
+    <div class="card">Add photo</div>
+    <div class="card">Add photo</div>
+    <div class="card">Add photo</div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section>
+  <h2 style="text-align:center;">Why Choose Us</h2>
+  <div class="grid">
+    <div class="card">✔ We come to you</div>
+    <div class="card">✔ Affordable pricing</div>
+    <div class="card">✔ Fast service</div>
+    <div class="card">✔ Attention to detail</div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
   <h2 style="text-align:center;">Services</h2>
-
   <div class="grid">
     <div class="card">
       <h3>Basic Wash</h3>
-      <p>Exterior wash, rinse, dry, tire shine, wheel clean.</p>
-      <p>$20 - $30</p>
+      <p>Exterior wash and tire shine</p>
+      <p>Starting at $30</p>
     </div>
-
     <div class="card">
       <h3>Interior Clean</h3>
-      <p>Vacuum, wipe-down, dash, cup holders, doors.</p>
-      <p>$35 - $50</p>
+      <p>Vacuum and wipe-down</p>
+      <p>Starting at $50</p>
     </div>
-
     <div class="card">
       <h3>Full Detail</h3>
-      <p>Full interior + exterior deep clean and shine restoration.</p>
-      <p>$60 - $100</p>
+      <p>Full interior + exterior</p>
+      <p>Starting at $100</p>
     </div>
   </div>
 </section>
@@ -322,48 +247,33 @@ button.submit{
 <!-- REVIEWS -->
 <section id="reviews">
   <h2 style="text-align:center;">Reviews</h2>
-
   <div class="grid">
-
-    <div class="card review">
-      <h3>⭐⭐⭐⭐</h3>
-      <p>“Truck looked brand new after the full detail. Super clean inside and outside.”</p>
-      <p style="color:#b8b8b8;font-size:13px;">– Jake C. / 2026 Chevy Silverado</p>
+    <div class="card">
+      ⭐⭐⭐⭐⭐<br>
+      “Looks brand new again”<br>
+      – Jake R., Silverado
     </div>
-
-    <div class="card review">
-      <h3>⭐⭐⭐⭐⭐</h3>
-      <p>“Very professional and fast. My car has never looked this clean before.”</p>
-      <p style="color:#b8b8b8;font-size:13px;">– Amber C. / 2010 Nissan Pathfinder</p>
+    <div class="card">
+      ⭐⭐⭐⭐⭐<br>
+      “Super clean and fast”<br>
+      – Amber C., Pathfinder
     </div>
-
-    <div class="card review">
-      <h3>⭐⭐⭐⭐⭐</h3>
-      <p>“Best detailing I’ve had. Worth every dollar, definitely booking again.”</p>
-      <p style="color:#b8b8b8;font-size:13px;">– Connie B. / 2011 Chevy Silverado </p>
-    </div>
-
   </div>
 </section>
 
 <!-- BOOK -->
 <section id="book">
   <h2 style="text-align:center;">Book a Detail</h2>
-
   <form action="https://formspree.io/f/mzdyqvre" method="POST">
     <input name="name" placeholder="Name" required>
     <input name="phone" placeholder="Phone" required>
-    <input name="suggested time" placeholder="Suggested Time" required>
-
     <select name="service">
       <option>Basic Wash</option>
       <option>Interior Clean</option>
       <option>Full Detail</option>
     </select>
-
     <input name="date" type="date" required>
     <textarea name="notes" placeholder="Notes"></textarea>
-
     <button class="submit">Request Booking</button>
   </form>
 </section>
@@ -371,22 +281,12 @@ button.submit{
 <!-- CONTACT -->
 <section id="contact">
   <h2 style="text-align:center;">Contact</h2>
-
   <div class="contact">
     📍 Senoia, GA<br>
-    📞 Your Number Here<br>
-    📸 @connellautodetail
+    📞 Your Number<br>
+    📸 @connelldetailing
   </div>
 </section>
-
-<script>
-function showTab(tab){
-  document.querySelectorAll("section").forEach(s=>{
-    s.classList.remove("active");
-  });
-  document.getElementById(tab).classList.add("active");
-}
-</script>
 
 </body>
 </html>
