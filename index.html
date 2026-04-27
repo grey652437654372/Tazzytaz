@@ -304,7 +304,7 @@ button.submit{
 <section id="reviews">
   <h2 style="text-align:center;">Reviews</h2>
   <div class="grid">
-    <div class="review">⭐⭐⭐⭐⭐<br>“Truck looked brand new.”</div>
+    <div class="review">⭐⭐⭐⭐<br>“Truck looked brand new.”</div>
     <div class="review">⭐⭐⭐⭐⭐<br>“Very clean and professional.”</div>
     <div class="review">⭐⭐⭐⭐⭐<br>“Will book again.”</div>
   </div>
@@ -313,18 +313,25 @@ button.submit{
 <!-- BOOK -->
 <section id="book">
   <h2 style="text-align:center;">Book a Detail</h2>
-  <form action="https://formspree.io/f/xzdywjod" method="POST">
-    <input type="text" placeholder="Name" required>
-    <input type="text" placeholder="Phone" required>
-    <select>
-      <option>Basic Wash</option>
-      <option>Interior Clean</option>
-      <option>Full Detail</option>
-    </select>
-    <input type="date">
-    <textarea placeholder="Notes"></textarea>
-    <button class="submit">Request Booking</button>
-  </form>
+  <form action="https://formspree.io/f/xzdywjod" method="POST" accept-charset="UTF-8">
+
+  <input type="text" name="name" placeholder="Name" required>
+
+  <input type="text" name="phone" placeholder="Phone" required>
+
+  <select name="service" required>
+    <option value="Basic Wash">Basic Wash</option>
+    <option value="Interior Clean">Interior Clean</option>
+    <option value="Full Detail">Full Detail</option>
+  </select>
+
+  <input type="date" name="date" required>
+
+  <textarea name="notes" placeholder="Notes"></textarea>
+
+  <button class="submit" type="submit">Request Booking</button>
+
+</form>
 </section>
 
 <!-- CONTACT -->
