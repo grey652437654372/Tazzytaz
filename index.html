@@ -9,18 +9,25 @@
 
 <style>
 :root{
-  --bg:#0b0b0b;
-  --card:#151515;
+  --bg:#0a0a0a;
+  --card:rgba(255,255,255,0.05);
   --text:#fff;
-  --muted:#aaa;
+  --muted:#b0b0b0;
   --border:rgba(255,255,255,0.08);
+  --glow:rgba(255,255,255,0.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+}
 
 body{
-  background:radial-gradient(circle at top,#1a1a1a,#0b0b0b);
+  background:radial-gradient(circle at top,#1a1a1a,#0a0a0a 60%);
   color:var(--text);
+  overflow-x:hidden;
 }
 
 /* NAV */
@@ -28,8 +35,9 @@ nav{
   display:flex;
   justify-content:center;
   gap:10px;
-  padding:15px;
-  background:#111;
+  padding:14px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(12px);
   position:sticky;
   top:0;
   z-index:10;
@@ -43,32 +51,41 @@ nav button{
   cursor:pointer;
   padding:8px 12px;
   border-radius:8px;
-  font-size:14px;
+  transition:0.2s;
 }
 
 nav button:hover{
   color:#fff;
   background:rgba(255,255,255,0.06);
+  box-shadow:0 0 20px var(--glow);
 }
 
-/* SECTIONS */
+/* PAGE TRANSITION SYSTEM */
 section{
   display:none;
-  padding:60px 20px;
+  padding:70px 20px;
   max-width:900px;
   margin:auto;
+  opacity:0;
+  transform:translateY(20px);
+  transition:0.5s ease;
 }
 
-.active{display:block;}
+section.active{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
 
 /* HERO */
 .hero{
   text-align:center;
-  padding:80px 20px;
+  padding:90px 20px 50px;
 }
 
 .hero h1{
-  font-size:40px;
+  font-size:44px;
+  letter-spacing:1px;
 }
 
 .hero p{
@@ -76,7 +93,7 @@ section{
   margin-top:10px;
 }
 
-/* CARDS */
+/* SERVICE GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -86,22 +103,42 @@ section{
 
 .card{
   background:var(--card);
-  padding:20px;
-  border-radius:12px;
   border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  backdrop-filter:blur(12px);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 0 30px rgba(255,255,255,0.08);
 }
 
 .price{
-  margin-top:10px;
-  font-weight:bold;
+  margin-top:8px;
+  font-weight:700;
+}
+
+/* ABOUT TEXT */
+.about-box{
+  background:var(--card);
+  padding:25px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  text-align:center;
+  color:var(--muted);
+  line-height:1.6;
 }
 
 /* FORM */
 form{
   background:var(--card);
-  padding:20px;
-  border-radius:12px;
+  padding:25px;
+  border-radius:14px;
   border:1px solid var(--border);
+  backdrop-filter:blur(12px);
   max-width:500px;
   margin:auto;
 }
@@ -114,23 +151,63 @@ input,select,textarea{
   border:1px solid #333;
   color:#fff;
   border-radius:8px;
+  outline:none;
 }
 
 button.submit{
   width:100%;
-  padding:10px;
+  padding:12px;
   background:#fff;
   color:#000;
   border:none;
   border-radius:8px;
-  cursor:pointer;
   font-weight:600;
+  cursor:pointer;
+  transition:0.2s;
 }
 
+button.submit:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 25px var(--glow);
+}
+
+/* CONTACT */
 .contact{
   text-align:center;
   color:var(--muted);
-  line-height:26px;
+  line-height:28px;
+}
+
+/* SMALL ANIMATED GLOW BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:rgba(255,255,255,0.05);
+  filter:blur(120px);
+  top:-100px;
+  left:-100px;
+  z-index:-1;
+  animation:float 10s infinite ease-in-out;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:400px;
+  height:400px;
+  background:rgba(255,255,255,0.04);
+  filter:blur(120px);
+  bottom:-100px;
+  right:-100px;
+  z-index:-1;
+  animation:float 12s infinite ease-in-out;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(30px,20px);}
 }
 </style>
 </head>
@@ -141,16 +218,21 @@ button.submit{
 <nav>
   <button onclick="showTab('home')">Home</button>
   <button onclick="showTab('services')">Services</button>
-  <button onclick="showTab('about')">About</button>
   <button onclick="showTab('book')">Book</button>
   <button onclick="showTab('contact')">Contact</button>
 </nav>
 
-<!-- HOME -->
+<!-- HOME + ABOUT COMBINED -->
 <section id="home" class="active">
   <div class="hero">
     <h1>Connell Auto Detail</h1>
-    <p>Mobile Car & Truck Detailing in Senoia, GA</p>
+    <p>Mobile Car & Truck Detailing • Senoia, GA</p>
+  </div>
+
+  <div class="about-box">
+    Connell Auto Detail is a local mobile detailing service based in Senoia, Georgia.  
+    I provide affordable interior and exterior cleaning for cars and trucks right at your location.  
+    Currently building experience and serving the local neighborhood.
   </div>
 </section>
 
@@ -168,7 +250,7 @@ button.submit{
     <div class="card">
       <h3>Interior Clean</h3>
       <div class="price">$35 - $50</div>
-      <p style="color:var(--muted);margin-top:5px;">Vacuum, dash wipe, trash removal.</p>
+      <p style="color:var(--muted);margin-top:5px;">Vacuum, dash wipe, cup holders, trash removal.</p>
     </div>
 
     <div class="card">
@@ -179,22 +261,12 @@ button.submit{
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <h2 style="text-align:center;">About</h2>
-
-  <p style="text-align:center;color:var(--muted);max-width:600px;margin:auto;">
-    Connell Auto Detail is a local mobile detailing service based in Senoia, Georgia.
-    I’m currently building experience and offering affordable detailing for cars and trucks in my neighborhood.
-  </p>
-</section>
-
 <!-- BOOK -->
 <section id="book">
   <h2 style="text-align:center;">Book a Detail</h2>
 
   <form action="https://formspree.io/f/xzdywjod" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="name" placeholder="Name" required>
     <input type="text" name="phone" placeholder="Phone Number" required>
 
     <select name="service">
@@ -216,15 +288,19 @@ button.submit{
 
   <div class="contact">
     📍 Senoia, GA<br>
-    📞 Add your number<br>
-    📸 Instagram: @connellautodetail (optional)
+    📞 Add your phone number<br>
+    📸 @connellautodetail
   </div>
 </section>
 
 <script>
 function showTab(tab){
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(tab).classList.add("active");
+  document.querySelectorAll("section").forEach(sec=>{
+    sec.classList.remove("active");
+  });
+
+  const el = document.getElementById(tab);
+  el.classList.add("active");
 }
 </script>
 
