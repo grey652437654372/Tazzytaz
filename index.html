@@ -312,12 +312,11 @@ button.submit{
 
 <!-- BOOK -->
 <section id="book">
-  <h2 style="text-align:center;">Book a Detail</h2>
-  <form action="https://formspree.io/f/xzdywjod" method="POST" accept-charset="UTF-8">
+  <form action="https://formspree.io/f/xzdywjod" method="POST">
 
   <input type="text" name="name" placeholder="Name" required>
 
-  <input type="text" name="phone" placeholder="Phone" required>
+  <input type="text" name="phone" placeholder="Phone Number" required>
 
   <select name="service" required>
     <option value="Basic Wash">Basic Wash</option>
@@ -327,7 +326,11 @@ button.submit{
 
   <input type="date" name="date" required>
 
-  <textarea name="notes" placeholder="Notes"></textarea>
+  <textarea name="notes" placeholder="Extra Notes (optional)"></textarea>
+
+  <!-- FIXES FORMSPREE ERROR -->
+  <input type="hidden" name="_subject" value="New Connell Auto Detail Booking">
+  <input type="hidden" name="_captcha" value="false">
 
   <button class="submit" type="submit">Request Booking</button>
 
