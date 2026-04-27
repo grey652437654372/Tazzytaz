@@ -30,7 +30,7 @@ body{
   overflow-x:hidden;
 }
 
-/* GLOW BACKGROUND */
+/* BACKGROUND GLOW */
 body::before,
 body::after{
   content:"";
@@ -57,7 +57,7 @@ body::after{bottom:-120px;right:-120px;animation-delay:2s;}
   padding:50px 20px 10px;
 }
 
-/* 🔥 CD LOGO */
+/* LOGO */
 .logo{
   width:82px;
   height:82px;
@@ -84,14 +84,8 @@ body::after{bottom:-120px;right:-120px;animation-delay:2s;}
 }
 
 @keyframes pulse{
-  0%,100%{
-    transform:scale(1);
-    box-shadow:0 0 20px rgba(255,255,255,0.12);
-  }
-  50%{
-    transform:scale(1.06);
-    box-shadow:0 0 40px rgba(255,255,255,0.25);
-  }
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.06);}
 }
 
 .title{
@@ -137,7 +131,7 @@ nav button:hover{
 /* SECTIONS */
 section{
   display:none;
-  padding:70px 20px;
+  padding:90px 20px;
   max-width:1000px;
   margin:auto;
   opacity:0;
@@ -178,38 +172,60 @@ section.active{
   line-height:1.6;
 }
 
-/* CARDS */
+/* GRID FIX (IMPORTANT) */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  margin-top:30px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  margin-top:40px;
+  padding:10px;
 }
 
+/* CARD FIX */
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px;
-  transition:0.3s;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  padding:25px;
+
+  text-align:left;
+
+  transition:0.3s ease;
+
+  backdrop-filter:blur(10px);
+}
+
+.card h3{
+  margin-bottom:10px;
+  font-size:18px;
+}
+
+.card p{
+  line-height:1.5;
+  color:#b8b8b8;
+  font-size:14px;
+  margin-bottom:10px;
 }
 
 .card:hover{
-  transform:translateY(-10px) scale(1.03);
-  box-shadow:0 0 30px rgba(255,255,255,0.12);
+  transform:translateY(-10px);
+  box-shadow:0 0 35px rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.2);
 }
 
-/* REVIEWS */
+/* REVIEWS FIX */
 .review{
-  background:var(--card);
-  padding:18px;
-  border-radius:12px;
-  border:1px solid var(--border);
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  padding:20px;
+  line-height:1.6;
+  text-align:left;
 }
 
 /* FORM */
 form{
-  background:var(--card);
+  background:rgba(255,255,255,0.04);
   padding:25px;
   border-radius:14px;
   border:1px solid var(--border);
@@ -274,7 +290,7 @@ button.submit{
 
   <div class="about-box">
     Connell Auto Detail is a mobile detailing service focused on cars and trucks in Senoia, Georgia.  
-    We provide interior deep cleaning, exterior washing, and full details that restore your vehicle’s shine without dealership pricing.
+    We provide interior deep cleaning, exterior washing, and full details that restore your vehicle’s shine.
   </div>
 </section>
 
@@ -285,19 +301,19 @@ button.submit{
   <div class="grid">
     <div class="card">
       <h3>Basic Wash</h3>
-      <p style="color:#b8b8b8;">Exterior wash, rinse, dry, tire shine, and wheel clean.</p>
+      <p>Exterior wash, rinse, dry, tire shine, wheel clean.</p>
       <p>$20 - $30</p>
     </div>
 
     <div class="card">
       <h3>Interior Clean</h3>
-      <p style="color:#b8b8b8;">Vacuum, wipe-down, cup holders, dash, and door panels.</p>
+      <p>Vacuum, wipe-down, dash, cup holders, doors.</p>
       <p>$35 - $50</p>
     </div>
 
     <div class="card">
       <h3>Full Detail</h3>
-      <p style="color:#b8b8b8;">Full interior + exterior deep clean and shine restoration.</p>
+      <p>Full interior + exterior deep clean and shine restoration.</p>
       <p>$60 - $100</p>
     </div>
   </div>
@@ -308,9 +324,9 @@ button.submit{
   <h2 style="text-align:center;">Reviews</h2>
 
   <div class="grid">
-    <div class="review">⭐⭐⭐⭐ “Truck looked brand new.”</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Very clean and professional.”</div>
-    <div class="review">⭐⭐⭐⭐⭐ “Best detailing I’ve had.”</div>
+    <div class="review">⭐⭐⭐⭐⭐ Truck looked brand new.</div>
+    <div class="review">⭐⭐⭐⭐⭐ Very clean and professional.</div>
+    <div class="review">⭐⭐⭐⭐⭐ Best detailing I’ve had.</div>
   </div>
 </section>
 
@@ -319,8 +335,8 @@ button.submit{
   <h2 style="text-align:center;">Book a Detail</h2>
 
   <form action="https://formspree.io/f/xzdywjod" method="POST">
-    <input name="name" type="text" placeholder="Name" required>
-    <input name="phone" type="text" placeholder="Phone" required>
+    <input name="name" placeholder="Name" required>
+    <input name="phone" placeholder="Phone" required>
 
     <select name="service">
       <option>Basic Wash</option>
@@ -331,7 +347,7 @@ button.submit{
     <input name="date" type="date" required>
     <textarea name="notes" placeholder="Notes"></textarea>
 
-    <button class="submit" type="submit">Request Booking</button>
+    <button class="submit">Request Booking</button>
   </form>
 </section>
 
