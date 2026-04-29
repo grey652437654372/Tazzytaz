@@ -13,15 +13,10 @@
   --text:#fff;
   --muted:#b8b8b8;
   --border:rgba(255,255,255,0.08);
+  --glow:0 0 20px rgba(255,255,255,0.15);
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Inter,sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif;}
 html{scroll-behavior:smooth;}
 
 body{
@@ -29,64 +24,32 @@ body{
   color:var(--text);
 }
 
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:0 20px;
-}
+.container{max-width:1000px;margin:auto;padding:0 20px;}
 
-.header{
-  text-align:center;
-  padding:60px 20px 20px;
-}
+.header{text-align:center;padding:60px 20px 20px;}
 
 .logo{
-  width:125px;
-  height:125px;
-  margin:0 auto 22px;
-  border-radius:100%;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:rgba(255,255,255,0.05);
-  border:2px solid rgba(255,255,255,0.25);
+  width:125px;height:125px;margin:0 auto 22px;
+  border-radius:100%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid rgba(255,255,255,0.3);
+  box-shadow:var(--glow);
 }
 
-.logo img{
-  width:116%;
-  height:116%;
-  object-fit:cover;
-}
+.logo img{width:115%;height:115%;object-fit:cover;}
 
-.title{
-  font-size:38px;
-  font-weight:800;
-}
-
-.tagline{
-  color:var(--muted);
-  margin-top:8px;
-  font-size:14px;
-}
+.title{font-size:38px;font-weight:800;}
+.tagline{color:var(--muted);margin-top:8px;font-size:14px;}
 
 nav{
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  padding:14px;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  position:sticky;
-  top:0;
-  z-index:10;
+  display:flex;justify-content:center;gap:12px;
+  padding:14px;background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);position:sticky;top:0;
 }
 
 nav a{
-  text-decoration:none;
-  color:var(--muted);
-  padding:8px 12px;
-  border-radius:8px;
+  text-decoration:none;color:var(--muted);
+  padding:8px 12px;border-radius:8px;
 }
 
 nav a:hover{
@@ -96,39 +59,20 @@ nav a:hover{
 
 section{padding:100px 0;}
 
-.section-title{
-  text-align:center;
-  font-size:28px;
-  margin-bottom:40px;
-}
+.section-title{text-align:center;font-size:28px;margin-bottom:40px;}
 
-.hero{
-  text-align:center;
-  max-width:650px;
-  margin:auto;
-}
-
-.hero h2{font-size:34px;}
-
-.hero p{
-  color:var(--muted);
-  margin-top:10px;
-}
+.hero{text-align:center;max-width:650px;margin:auto;}
 
 .cta,.submit{
-  margin-top:20px;
-  padding:14px 24px;
-  background:#fff;
-  color:#000;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.2s ease;
+  margin-top:20px;padding:14px 24px;
+  background:#fff;color:#000;border:none;
+  border-radius:10px;font-weight:700;cursor:pointer;
+  transition:0.2s;
 }
 
 .cta:hover,.submit:hover{
   transform:scale(1.05);
+  box-shadow:var(--glow);
 }
 
 .grid{
@@ -142,63 +86,78 @@ section{padding:100px 0;}
   border:1px solid var(--border);
   border-radius:16px;
   padding:24px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  transition:all 0.3s ease;
+  transition:0.3s;
 }
 
 .card:hover{
-  transform:translateY(-12px) scale(1.02);
-  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+  transform:translateY(-10px);
+  box-shadow:var(--glow);
 }
 
-.card p{
-  color:var(--muted);
-  line-height:1.5;
-}
+.card p{color:var(--muted);margin-bottom:10px;}
 
-form{
-  max-width:500px;
-  margin:40px auto 0;
-}
+form{max-width:500px;margin:40px auto 0;}
 
 input,select,textarea{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  background:#0f0f0f;
-  border:1px solid #333;
-  color:#fff;
-  border-radius:8px;
+  width:100%;padding:10px;margin:8px 0;
+  background:#0f0f0f;border:1px solid #333;
+  color:#fff;border-radius:8px;
 }
 
-.contact{
+/* 🔥 urgency bar */
+.urgency{
   text-align:center;
-  color:var(--muted);
-  margin-top:20px;
-  line-height:30px;
+  background:#111;
+  padding:10px;
+  font-size:14px;
+  color:#fff;
+  border-bottom:1px solid var(--border);
 }
 
-.fade-in{
+/* 📸 slider */
+.slider{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+}
+
+.slider img{
+  width:100%;
+  display:none;
+}
+
+.slider img.active{
+  display:block;
+}
+
+/* ✅ popup */
+.popup{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) scale(0.8);
+  background:#111;
+  padding:30px;
+  border-radius:16px;
+  text-align:center;
   opacity:0;
-  transform:translateY(40px);
-  transition:all 0.8s ease;
+  transition:0.3s;
 }
 
-.fade-in.visible{
+.popup.show{
   opacity:1;
-  transform:translateY(0);
+  transform:translate(-50%,-50%) scale(1);
 }
 </style>
 </head>
 
 <body>
 
+<div class="urgency">🔥 Only a few spots left this week — book now</div>
+
 <div class="header">
-<div class="logo">
-  <img src="images/logo.png" alt="Connell Detailing Logo">
-</div>
+  <div class="logo">
+    <img src="images/logo.png">
+  </div>
   <div class="title">Connell Detailing</div>
   <div class="tagline">Mobile Car Detailing • Senoia, GA</div>
 </div>
@@ -209,143 +168,110 @@ input,select,textarea{
   <a href="#services">Services</a>
   <a href="#reviews">Reviews</a>
   <a href="#book">Book</a>
-  <a href="#contact">Contact</a>
 </nav>
 
-<section id="home" class="fade-in">
-  <div class="container">
-    <div class="hero">
-  <p style="color:#b8b8b8; font-size:13px; margin-bottom:10px;">
-    || Customer Provides Driveway Space, Water Access, & Electricity ||
-  </p>
+<section id="home">
+<div class="container hero">
+<h2>Mobile Car Detailing</h2>
+<p>We come to you and make your car look brand new.</p>
+<button class="cta" onclick="scrollToBook()">Book Now</button>
+</div>
+</section>
 
-  <h2>Mobile Car Detailing in Senoia, GA</h2>
-  <p>We come to your driveway and make your car look like new — fast, affordable, and reliable.</p>
+<!-- 📸 GALLERY SLIDER -->
+<section id="gallery">
+<div class="container">
+<h2 class="section-title">Before & After</h2>
 
-  <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Now</button>
+<div class="slider">
+  <img src="images/before1.jpg" class="active">
+  <img src="images/after1.jpg">
+  <img src="images/before2.jpg">
 </div>
 
-    <div style="margin-top:30px;text-align:center;color:#b8b8b8;">
-      ✔ We Come To You &nbsp;&nbsp; ✔ Affordable Pricing &nbsp;&nbsp; ✔ Attention to Detail &nbsp;&nbsp; ✔ Local & Reliable
-    </div>
-  </div>
+</div>
 </section>
 
-<section id="gallery" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Before & After</h2>
-    <div class="grid">
-      <div class="card">Add photo</div>
-      <div class="card">Add photo</div>
-      <div class="card">Add photo</div>
-    </div>
-  </div>
+<section id="services">
+<div class="container">
+<h2 class="section-title">Services</h2>
+
+<div class="grid">
+<div class="card"><h3>Basic Wash</h3><p>Exterior wash + wheels</p><p><strong>$30</strong></p></div>
+<div class="card"><h3>Interior Clean</h3><p>Vacuum + wipe</p><p><strong>$50</strong></p></div>
+<div class="card"><h3>Full Detail 🔥</h3><p>Complete deep clean</p><p><strong>$100</strong></p></div>
+</div>
+
+</div>
 </section>
 
-<section class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Why Choose Connell Detailing</h2>
-    <div class="grid">
-      <div class="card">✔ We come to you — no waiting</div>
-      <div class="card">✔ We take our time and don’t rush jobs</div>
-      <div class="card">✔ We focus on the small details others miss</div>
-    </div>
-  </div>
+<section id="reviews">
+<div class="container">
+<h2 class="section-title">Reviews</h2>
+
+<div class="grid">
+<div class="card"><p>⭐⭐⭐⭐⭐</p><p>“Looks brand new again”</p><p>– Jake</p></div>
+<div class="card"><p>⭐⭐⭐⭐⭐</p><p>“Super clean and fast”</p><p>– Amber</p></div>
+<div class="card"><p>⭐⭐⭐⭐⭐</p><p>“Best detail I’ve had”</p><p>– Chris</p></div>
+</div>
+
+</div>
 </section>
 
-<section id="services" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Services</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Basic Wash</h3>
-        <p>• Exterior wash<br>• Wheels cleaned<br>• Tire shine</p>
-        <p><strong>$30</strong></p>
-      </div>
+<section id="book">
+<div class="container">
+<h2 class="section-title">Book Now</h2>
 
-      <div class="card">
-        <h3>Interior Clean</h3>
-        <p>• Vacuum<br>• Full wipe down<br>• Cup holders + vents</p>
-        <p><strong>$50</strong></p>
-      </div>
+<form onsubmit="handleSubmit(event)">
+<input placeholder="Name" required>
+<input placeholder="Phone" required>
+<input placeholder="Vehicle" required>
 
-      <div class="card">
-        <h3>Full Detail 🔥 (Most Popular)</h3>
-        <p>• Interior + exterior<br>• Deep clean<br>• Full refresh</p>
-        <p><strong>$100</strong></p>
-      </div>
-    </div>
-  </div>
+<select>
+<option>Basic Wash</option>
+<option>Interior Clean</option>
+<option>Full Detail</option>
+</select>
+
+<button class="submit">Request Booking</button>
+</form>
+
+</div>
 </section>
 
-<section id="reviews" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Reviews</h2>
-    <div class="grid">
-      <div class="card">⭐⭐⭐⭐⭐<br>“Looks brand new again”<br>– Jake R.</div>
-      <div class="card">⭐⭐⭐⭐⭐<br>“Super clean and fast”<br>– Amber C.</div>
-    </div>
-
-    <div style="text-align:center;margin-top:20px;">
-      <button class="cta" onclick="document.getElementById('book').scrollIntoView()">Book Your Detail</button>
-    </div>
-  </div>
-</section>
-
-<section id="book" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Book a Detail</h2>
-
-    <p style="text-align:center;color:#b8b8b8;">
-      Fill this out and we’ll confirm your appointment quickly. Spots are limited this week.
-    </p>
-
-    <form action="https://formspree.io/f/mzdyqvre" method="POST">
-      <input name="name" placeholder="Name" required>
-      <input name="phone" placeholder="Phone" required>
-      <input name="vehicle" placeholder="Vehicle" required>
-
-      <select name="service">
-        <option>Basic Wash</option>
-        <option>Interior Clean</option>
-        <option>Full Detail</option>
-      </select>
-
-      <input name="date" type="date" required>
-      <textarea name="notes" placeholder="Notes"></textarea>
-
-      <button class="submit">Request Booking</button>
-    </form>
-
-    <p style="text-align:center;margin-top:20px;color:#b8b8b8;">
-      We don’t leave until you’re satisfied.
-    </p>
-  </div>
-</section>
-
-<section id="contact" class="fade-in">
-  <div class="container">
-    <h2 class="section-title">Contact</h2>
-    <div class="contact">
-      📍 Senoia, GA<br>
-      📞 YOUR NUMBER HERE<br>
-      📸 @connelldetailing
-    </div>
-  </div>
-</section>
+<div class="popup" id="popup">
+<h2>✅ Request Sent</h2>
+<p>We’ll text you soon.</p>
+</div>
 
 <script>
-const faders = document.querySelectorAll('.fade-in');
+// scroll
+function scrollToBook(){
+  document.getElementById('book').scrollIntoView({behavior:'smooth'});
+}
 
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-    }
-  });
-},{threshold:0.2});
+// slider
+let slides=document.querySelectorAll('.slider img');
+let i=0;
+setInterval(()=>{
+  slides[i].classList.remove('active');
+  i=(i+1)%slides.length;
+  slides[i].classList.add('active');
+},2500);
 
-faders.forEach(el=>observer.observe(el));
+// popup
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('popup').classList.add('show');
+
+  if(navigator.vibrate){
+    navigator.vibrate(200);
+  }
+
+  setTimeout(()=>{
+    document.getElementById('popup').classList.remove('show');
+  },3000);
+}
 </script>
 
 </body>
